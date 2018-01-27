@@ -8,8 +8,31 @@
                     </div>
                     <div class="float-right">
                         <ul class="cart">
-                            <li><a href="registration.php" onclick="document.getElementById('id01').style.display='block'">Sign Up</a> (or) <a href="login.php">Sign in</a> </li>
+						@guest
+                            <li><a href="{{ route('register') }}" onclick="document.getElementById('id01').style.display='block'">Sign Up</a> (or) <a href="{{ route('login') }}">Sign in</a> </li>
+						@else
+                            <li class="dropdown">
+								Hi,
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                    {{ Auth::user()->user_name }} <span class="caret"></span>
+                                </a>
+
+                                <ul class="dropdown-menu" role="menu">
+                                    <li>
+                                        <a href="{{ route('logout') }}"
+                                            onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                            Logout
+                                        </a>
+
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                            {{ csrf_field() }}
+                                        </form>
+                                    </li>
+                                </ul>
+                            </li>
                             <li><i class="fa fa-shopping-cart"></i>(0) items in cart | ($0.00)</li>
+						@endguest
                         </ul>
                     </div>
                 </div>
@@ -26,17 +49,9 @@
                             </li>
                             <li class="menu-item"><a href="shop-three-col.html">Menu</a>
                                 <ul class="sub-menu">
-                        <!--        <li class="menu-item"><a href="shop-two-col.html">Indian</a>
-                                    </li>
-                                    <li class="menu-item"><a href="shop-three-col.html">Chinis</a> 
-									</li>
-                                    <li class="menu-item"><a href="shop-four-col.html">Italian</a>
-                                    </li>
-                                    <li class="menu-item"><a href="shop-detail.html">Mexican</a>
-									</li>
-									 <li class="menu-item"><a href="shop-detail.html">Bengali</a>
-									</li>  -->
-									<?php //query() ?>
+									@foreach($menu_category as $brandname)
+								<li class="menu-item">	{{$brandname->category_name}}</li>
+									@endforeach
                                 </ul>
 								<?php //close()?>
                             </li>
