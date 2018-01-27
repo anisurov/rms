@@ -12,7 +12,7 @@
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                            <label for="name" class="col-md-4 control-label">Name</label>
+                            <label for="name" class="col-md-4 control-label">Name *</label>
 
                             <div class="col-md-6">
                                 <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
@@ -20,6 +20,20 @@
                                 @if ($errors->has('name'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('name') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+						
+						      <div class="form-group{{ $errors->has('mnumber') ? ' has-error' : '' }}">
+                            <label for="name" class="col-md-4 control-label">Mobile Number *</label>
+
+                            <div class="col-md-6">
+                                <input id="mnumber" type="text" class="form-control" name="mnumber" value="{{ old('mnumber') }}" required autofocus>
+
+                                @if ($errors->has('mnumber'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('mnumber') }}</strong>
                                     </span>
                                 @endif
                             </div>
@@ -38,9 +52,37 @@
                                 @endif
                             </div>
                         </div>
+						
+						      <div class="form-group{{ $errors->has('adress') ? ' has-error' : '' }}">
+                            <label for="name" class="col-md-4 control-label">Address *</label>
+
+                            <div class="col-md-6">
+                                <input id="address" type="text" class="form-control" name="address" value="{{ old('address') }}" required autofocus>
+
+                                @if ($errors->has('address'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('address') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+						
+						      <div class="form-group{{ $errors->has('dob') ? ' has-error' : '' }}">
+                            <label for="name" class="col-md-4 control-label">Date Of Birth *</label>
+
+                            <div class="col-md-6">
+                                <input id="dob" type="date" class="form-control" name="dob" value="{{ old('dob') }}" required autofocus>
+
+                                @if ($errors->has('dob'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('dob') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
 
                         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label for="password" class="col-md-4 control-label">Password</label>
+                            <label for="password" class="col-md-4 control-label">Password *</label>
 
                             <div class="col-md-6">
                                 <input id="password" type="password" class="form-control" name="password" required>
@@ -54,7 +96,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="password-confirm" class="col-md-4 control-label">Confirm Password</label>
+                            <label for="password-confirm" class="col-md-4 control-label">Confirm Password *</label>
 
                             <div class="col-md-6">
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>

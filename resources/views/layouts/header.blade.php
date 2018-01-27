@@ -9,6 +9,7 @@
     
    
     <!-- **CSS - stylesheets** -->
+    <link  href="{{asset('css/app.css')}}" rel="stylesheet" media="all" />
     <link id="default-css" href="style.css" rel="stylesheet" media="all" />
     <link id="shortcodes-css" href="css/shortcodes.css" rel="stylesheet" media="all" />    
     <link id="skin-css" href="skins/palebrown/style.css" rel="stylesheet" media="all" />
