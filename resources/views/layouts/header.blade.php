@@ -8,6 +8,12 @@
 	<meta name="author" content="" />
     
    
+	<!--**CSS user Modal**-->
+       <link href='http://fonts.googleapis.com/css?family=PT+Sans:400,700' rel='stylesheet' type='text/css'>
+      <!-- <link rel="stylesheet" href="css/resetem.css"> <!-- CSS reset -->
+       <link rel="stylesheet" href="css/user.modal.css"> <!-- Gem style -->
+
+    
     <!-- **CSS - stylesheets** -->
     <link  href="{{asset('css/app.css')}}" rel="stylesheet" media="all" />
     <link id="default-css" href="style.css" rel="stylesheet" media="all" />
