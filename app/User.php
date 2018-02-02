@@ -7,7 +7,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
-	protected $table = 'user';
+    protected $table = 'user';
     use Notifiable;
 
     /**
@@ -15,8 +15,9 @@ class User extends Authenticatable
      *
      * @var array
      */
-	 
-	
+	 public function getAuthPassword(){
+           return $this->user_password;
+         }
 	protected $primaryKey = 'user_id';
 	public $timestamps =false;
 	

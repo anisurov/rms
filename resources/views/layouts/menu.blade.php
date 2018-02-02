@@ -9,7 +9,11 @@
                     <div class="float-right">
                         <ul class="cart">
 						@guest
-                            <li><a href="{{ route('register') }}" onclick="document.getElementById('id01').style.display='block'">Sign Up</a> (or) <a href="{{ route('login') }}">Sign in</a> </li>
+			    <nav class="main-nav">
+			   <ul>
+                            <li><a class="register-overlayLink" href="{{ route('register') }}">Sign Up</a> </li><li> <a class="overlayLink" href="{{ route('login') }}">Sign in</a> </li>
+			</ul>
+			</nav>
 						@else
                             <li class="dropdown">
 								Hi,
@@ -49,6 +53,12 @@
                             </li>
                             <li class="menu-item"><a href="shop-three-col.html">Menu</a>
                                 <ul class="sub-menu">
+<?php 
+//use DB;
+
+$menu_category=DB::select('select category_name from menu_category'); 
+
+?>
 									@foreach($menu_category as $brandname)
 								<li class="menu-item">	{{$brandname->category_name}}</li>
 									@endforeach

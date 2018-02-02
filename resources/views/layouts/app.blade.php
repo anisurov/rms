@@ -19,8 +19,10 @@
    
     <!-- main-content div Ends here -->
 </div>
+
+@include('layouts.signinup')
     <!-- Java Scripts -->
-    <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+        <script src="{{ asset('js/app.js') }}"></script>
 	<script type="text/javascript" src="js/jquery-migrate-1.2.1.min.js"></script>
 	<script type="text/javascript" src="js/jquery-easing-1.3.js"></script>    
 
@@ -128,6 +130,6 @@ window.onclick = function(event) {
     }
 }
 </script>
-    <script src="{{ asset('js/app.js') }}"></script>
+<script src="js/user.modal.js"></script> <!-- Gem jQuery --
 </body>
 </html>
