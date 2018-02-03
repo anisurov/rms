@@ -7,7 +7,7 @@
 	<div class="main-content">
         <!-- wrapper div Starts here -->
         <div class="wrapper">
-		@include('layouts.menu')
+		@include('layouts.nav')
 
             
       @yield('content')
@@ -23,23 +23,23 @@
 @include('layouts.signinup')
     <!-- Java Scripts -->
         <script src="{{ asset('js/app.js') }}"></script>
-	<script type="text/javascript" src="js/jquery-migrate-1.2.1.min.js"></script>
-	<script type="text/javascript" src="js/jquery-easing-1.3.js"></script>    
+	<script type="text/javascript" src="{{ asset('js/jquery-migrate-1.2.1.min.js')}}"></script>
+	<script type="text/javascript" src="{{ asset('js/jquery-easing-1.3.js')}}"></script>    
 
-	<script type="text/javascript" src="js/superfish.min.js"></script>
-    <script type="text/javascript" src="js/hoverIntent.js"></script>
-    <script type="text/javascript" src="js/jquery.slicknav.min.js"></script>
+	<script type="text/javascript" src="{{ asset('js/superfish.min.js')}}"></script>
+    <script type="text/javascript" src="{{ asset('js/hoverIntent.js')}}"></script>
+    <script type="text/javascript" src="{{ asset('js/jquery.slicknav.min.js')}}"></script>
     
-	<script type="text/javascript" src="js/jquery.carouFredSel-6.2.1-packed.js"></script>
-	<script type="text/javascript" src="js/jquery.tabs.min.js"></script>
+	<script type="text/javascript" src="{{ asset('js/jquery.carouFredSel-6.2.1-packed.js')}}"></script>
+	<script type="text/javascript" src="{{ asset('js/jquery.tabs.min.js')}}"></script>
     
     <script src="http://maps.google.com/maps/api/js?sensor=false"></script>
-    <script src="js/jquery.gmap.min.js"></script>
+    <script src="{{ asset('js/jquery.gmap.min.js')}}"></script>
     
-	<script type="text/javascript" src="js/twitter/jquery.tweet.min.js"></script>
+	<script type="text/javascript" src="{{ asset('js/twitter/jquery.tweet.min.js')}}"></script>
     
 	<!-- Revolution Slider Starts -->
-    <script src="js/revolution/jquery.themepunch.revolution.min.js" type="text/javascript"></script>
+    <script src="{{ asset('js/revolution/jquery.themepunch.revolution.min.js')}}" type="text/javascript"></script>
     <script type="text/javascript">
 	jQuery(document).ready(function($){	
 	if($.fn.cssOriginal != undefined)
@@ -104,10 +104,10 @@
     <!-- Revolution Slider Ends -->
     
 	<!-- Style Picker Starts -->
-	<script src="js/jquery.cookie.js"></script> 
+	<script src="{{ asset('js/jquery.cookie.js')}}"></script> 
     <!-- Style Picker Ends -->
     
-    <script src="js/custom.js"></script>
+    <script src="{{ asset('js/custom.js')}}"></script>
 
 <script type="text/javascript">
 //<![CDATA[
@@ -130,6 +130,6 @@ window.onclick = function(event) {
     }
 }
 </script>
-<script src="js/user.modal.js"></script> <!-- Gem jQuery --
+<script src="{{ asset('js/user.modal.js')}}"></script> <!-- Gem jQuery --
 </body>
 </html>

@@ -1,0 +1,61 @@
+/*
+ * main.css
+ * Copyright (C) 2017 ARO
+ *
+ * Distributed under terms of the MIT license.
+ */
+.panel-head-color{
+  background-color:#A44823 ; 
+  color: white;
+}
+.info-container-main{
+  padding-top: 15px;clear: both;padding-bottom: 15px;
+}
+
+.panel-default > .panel-heading{
+  background-color:#A44823 ; 
+  color: white;
+  border-bottom-color:#245269;
+  border-bottom-width:4px;
+}
+
+
+.inside-body-panel-shadow{
+    -webkit-box-shadow: 10px 10px 75px 3px rgba(255,255,255,1);
+    -moz-box-shadow: 10px 10px 75px 3px rgba(255,255,255,1);
+    box-shadow: 10px 10px 75px 3px rgba(255,255,255,1);
+    border-bottom-width: 4px;
+    border-bottom-color: #A44823;
+      
+}
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:focus, .navbar-default .navbar-nav > .active > a:hover {
+	color: #f3dcf2;
+	background-color: rgba(0,0,6, 0.2);
+}
+.navbar-default .navbar-nav > li > a{
+	color: #f3dcf2;
+	background-color: rgba(30,45,100, 0.2);
+}
+.navbar-default .navbar-nav >li > a:hover {
+	color: #f3dcf2;
+	background-color: rgba(0,255,40, 0.2);
+}
+.dropdown-menu {
+background-color:#245269;
+color:white;
+}
+.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:focus, .navbar-default .navbar-nav > .open > a:hover {
+	background-color: #245269;
+	color: white;
+}
+.dropdown-menu>li>a{
+color:white;
+}
+.panel>.panel-heading>.image>img{
+width:100%;
+max-width:45px;
+height:auto;
+}
+.img-circle{
+border-radius:50%;
+}

@@ -26,3 +26,9 @@ Route::get('404',['as'=>'404','uses'=>'ErrorHandleController@errorCode404']);
 Route::get('405',['as'=>'405','uses'=>'ErrorHandleController@errorCode405']);
 /*Routes, Handles Error exceptions [END]*/
 
+/*Routes, For Menu,Item [START]*/
+Route::get('menu/{id}',['as'=>'menu','uses'=>'MenuItemController@index']);
+Route::get('menu',['as'=>'allMenu','uses'=>'MenuItemController@allMenu']);
+Route::get('item/{id}',['as'=>'item','uses'=>'MenuItemController@index']);
+/*Routes, For Menu,Item [END]*/
+

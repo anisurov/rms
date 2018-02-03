@@ -6,7 +6,7 @@
             <form class="form-horizontal" method="POST" action="{{ route('login') }}">
                         {{ csrf_field() }}
 
-                        <div class="form-group{{ $errors->has('user_email') ? ' has-error' : '' }}">
+                        <div class="form-group">
                             <label for="user_email" class="col-md-4 control-label">E-Mail Address</label>
 
                             <div class="col-md-6">
@@ -20,17 +20,16 @@
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+                        <div class="form-group">
                             <label for="password" class="col-md-4 control-label">Password</label>
 
                             <div class="col-md-6">
                                 <input id="password" type="password" class="form-control" name="password" required>
 
-                                @if ($errors->has('password'))
+
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
+                                        <strong></strong>
                                     </span>
-                                @endif
                             </div>
                         </div>
 
@@ -61,15 +60,15 @@
     </div>
 </div>
 
-<div class="register-overlay" style="display: none;" id="register-form">
-    <div class="register-wrapper">
-        <div class="register-content" id="registerTarget">
+<div class="register-overlay" style="display: none;overflow:scroll;" id="register-form">
+    <div class="register-wrapper" style="padding-top: 15px;clear: both;padding-bottom: 15px;">
+        <div class="register-content" id="registerTarget" style="padding-top: 30px;">
             <a class="register-close">x</a>
             <h3>Sign Up</h3>
             <form class="form-horizontal" method="POST" action="{{ route('register') }}">
                         {{ csrf_field() }}
 
-                        <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
+                        <div class="form-group">
                             <label for="name" class="col-md-4 control-label">Name *</label>
 
                             <div class="col-md-6">
@@ -83,7 +82,7 @@
                             </div>
                         </div>
 						
-						      <div class="form-group{{ $errors->has('mnumber') ? ' has-error' : '' }}">
+						      <div class="form-group">
                             <label for="name" class="col-md-4 control-label">Mobile Number *</label>
 
                             <div class="col-md-6">
@@ -97,7 +96,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                        <div class="form-group">
                             <label for="email" class="col-md-4 control-label">E-Mail Address</label>
 
                             <div class="col-md-6">
@@ -111,7 +110,7 @@
                             </div>
                         </div>
 						
-						      <div class="form-group{{ $errors->has('adress') ? ' has-error' : '' }}">
+						      <div class="form-group">
                             <label for="name" class="col-md-4 control-label">Address *</label>
 
                             <div class="col-md-6">
@@ -125,7 +124,7 @@
                             </div>
                         </div>
 						
-						      <div class="form-group{{ $errors->has('dob') ? ' has-error' : '' }}">
+						      <div class="form-group">
                             <label for="name" class="col-md-4 control-label">Date Of Birth *</label>
 
                             <div class="col-md-6">
@@ -139,7 +138,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+                        <div class="form-group">
                             <label for="password" class="col-md-4 control-label">Password *</label>
 
                             <div class="col-md-6">

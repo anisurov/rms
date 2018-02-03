@@ -1,6 +1,4 @@
-<?php //include_once 'function.php'; ?>
-	
-<!-- top bar div Starts here -->
+	<!-- top bar div Starts here -->
             <div class="top-bar">
                 <div class="container">
                     <div class="float-left">
@@ -48,10 +46,10 @@
                     <a href="#" id="logo"></a>
                     <nav id="main-menu">
                         <ul>
-                            <li class="menu-item current-page-item"><a href="index.php">Home</a>
+                            <li class="menu-item current-page-item"><a href="/">Home</a>
 
                             </li>
-                            <li class="menu-item"><a href="shop-three-col.html">Menu</a>
+                            <li class="menu-item"><a href="{{route('allMenu')}}">Menu</a>
                                 <ul class="sub-menu">
 									@foreach(App\Menu::all() as $category)
 								<li class="menu-item"><a href="{{route('menu',$category->category_id)}}">	{{$category->category_name}}</a></li>
