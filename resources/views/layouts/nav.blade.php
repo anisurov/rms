@@ -60,11 +60,13 @@
 						
 							<li class="menu-item"><a href="shop-three-col.html">Event Booking</a>
 							</li>
+							<li class="menu-item"><a href="{{ url('/uploads') }}">Add Menu</a></li>
+							
 							<li class="menu-item"><a href="reserve.php">Table Reservetion</a></li>
 							
 							<li class="menu-item"><a href="shop-three-col.html">Online Food Order</a></li>
 
-                            <li class="menu-item"><a href="about.html">About Us</a></li>
+                            <li class="menu-item"><a href="about.html">About Ussss</a></li>
                           							
 							<li class="menu-item"><a href="shop-three-col.html">Contact Us</a></li>
 
