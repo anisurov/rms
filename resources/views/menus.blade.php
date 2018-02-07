@@ -9,7 +9,7 @@
               <div class="panel-heading" style="padding:25px;"><div class="float-left">{{$item->item_name}}</div><div class="float-right">Rating:{{$item->item_rating}}</div></div>
 
                 <div class="panel-body">
-                       <div class="pull-left"> <img src="cinqueterre.jpg" class="img-responsive img-item" alt="{{ $item->item_name }}"> </div>
+                       <div class="pull-left"> <img src="{{asset('uploa/')}}/{{$item->item_image}}" class="img-responsive img-item" alt="{{ $item->item_name }}"> </div>
                        <div class="pull-right item-description"> {{$item->item_description}}</div>
                 </div>
                 <div class="panel-footer">
