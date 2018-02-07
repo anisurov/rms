@@ -1,7 +1,7 @@
 <div class="overlay" style="display: none;" id="login-form">
     <div class="login-wrapper">
         <div class="login-content" id="loginTarget">
-            <a class="close">x</a>
+            <a class="login-close">x</a>
             <h3>Sign in</h3>
             <form class="form-horizontal" method="POST" action="{{ route('login') }}">
                         {{ csrf_field() }}

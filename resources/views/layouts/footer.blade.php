@@ -80,7 +80,7 @@
                 </div>
                 <div class="footer-info">
                     <div class="container">
-                        <p class="copyright">&copy; 2017 <a href="http://themeforest.net/user/BuddhaThemes/portfolio">SM corp</a>.Ekhuni Chai </p>
+                        <p class="copyright">&copy; {{date('Y')}} <a href="http://themeforest.net/user/BuddhaThemes/portfolio">SM corp</a>.Ekhuni Chai </p>
                         <ul class="footer-links">
                             <li><a href="index.html">Home</a>/</li> 
                             <li><a href="menu.html">Menu</a>/</li>

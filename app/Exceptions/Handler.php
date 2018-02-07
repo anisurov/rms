@@ -14,6 +14,7 @@ class Handler extends ExceptionHandler
      */
     protected $dontReport = [
         //
+	'Symfony\Component\HttpKernel\Exception\HttpException'
     ];
 
     /**
@@ -48,6 +49,11 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
+	 if ($exception instanceof TokenMismatchException){
+            // Redirect to a form. Here is an example of how I handle mine
+            return redirect($request->fullUrl())->with('csrf_error',"Oops! Seems you couldn't submit form for a long time. Please try again.");
+        }
+
         return parent::render($request, $exception);
     }
 }

@@ -13,7 +13,7 @@ jQuery(document).ready(function() {
         jQuery(".overlay").fadeToggle("fast");
     });
      
-    jQuery(".close").click(function(){
+    jQuery(".login-close").click(function(){
         jQuery(".overlay").fadeToggle("fast");
     });
      
@@ -187,6 +187,11 @@ jQuery('#register-form button[type=submit]').click(function(e){
                         jQuery('#register-form #email').closest('.form-group').find('.help-block').html(messages.errors.email[0]);
                         
                     }
+			else if(messages.message){
+				if(!jQuery('#register-form #email').closest('.form-group').find('.help-block').hasClass('alert-danger'))
+			jQuery('#register-form #email').closest('.form-group').find('.help-block').addClass('alert-danger');
+                        jQuery('#register-form #email').closest('.form-group').find('.help-block').html(messages.errors.email[0]);
+		 }
                     if(messages.errors.name){
 		if(!jQuery('#register-form #name').closest('.form-group').find('.help-block').hasClass('alert-danger'))
 			jQuery('#register-form #name').closest('.form-group').find('.help-block').addClass('alert-danger');
