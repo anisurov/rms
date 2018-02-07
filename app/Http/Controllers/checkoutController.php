@@ -1,0 +1,120 @@
+<?php
+
+namespace App\Http\Controllers;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
+use App\Order;
+use App\Item;
+use \Cart as Cart;
+use Validator;
+
+class checkoutController extends Controller
+{
+
+    public function __construct(){
+    $this->middleware('auth');
+  }
+  public function index(){
+  	if(sizeof(Cart::content())>0){
+		$userID=Auth::user()->user_id;
+		$successCount=1;
+		$errorCount=1;
+		foreach(Cart::content() as $item){
+			
+		$availableQty=Item::where('item_id',$item->name)->pluck('item_availability')->first();
+		   if($availableQty>$item->qty){
+			$ordered=Item::where('item_id',$item->name)->pluck('item_ordered')->first();
+			Item::where('item_id',$item->name)->update(['item_availability'=>($availableQty-$item->qty),'item_ordered'=>($ordered+$item->qty)]);
+ 	 	 
+			date_default_timezone_set("Asia/Dhaka");
+			$data[$successCount]['user_id'] = $userID;
+			$data[$successCount]['item_id'] = $item->name;
+			$data[$successCount]['date'] = date("Y-m-d");	 	 
+			$data[$successCount]['time'] = date("H:i");
+			$data[$successCount]['total_price'] = $item->price*$item->qty;
+			$successCount = $successCount + 1;
+			//var_dump($data);
+		   }else{
+				$errorData[$errorCount]['item_id']=$item->name;
+				$errorCount = $errorCount + 1;
+				
+	               }
+		}
+		if(isset($data)&&$this->create($data)){
+				if(sizeof(Cart::content())==sizeof($data)){
+				Cart::destroy();
+				return redirect('cart')->withErrorMessage('Your Order Has been placed successfully');
+				}else{
+					
+						$message = '';
+					foreach($errorData as $item){
+						$item_name = Item::where('item_id',$item['item_id'])->pluck('item_name')->first();
+						$message = $message.$item_name.',';}
+					if(sizeof(Cart::content())==sizeof($errorData)){
+					Cart::destroy();
+					return redirect('cart')->withErrorMessage('Sorry!! Quantity of '.$message.'You are ordering is not available right now');
+				}else{
+					Cart::destroy();
+					return redirect('cart')->withErrorMessage('Sorry!! Quantity of '.$message.'You are ordering is not available right now , but we took other orders');	
+				}
+			}
+		    }else{
+					$message = '';
+					foreach($errorData as $item){
+						$item_name = Item::where('item_id',$item['item_id'])->pluck('item_name')->first();
+						$message = $message.$item_name.',';}
+					if(sizeof(Cart::content())==sizeof($errorData)){
+					Cart::destroy();
+					return redirect('cart')->withErrorMessage('Sorry!! Quantity of '.$message.'You are ordering is not available right now');
+				}else{
+					Cart::destroy();
+					return redirect('cart')->withErrorMessage('Sorry!! Quantity of '.$message.'You are ordering is not available right now , but we took other orders');	
+				}
+			//return redirect('cart')->withErrorMessage('Sorry!! we are not able to take your order right now');	
+		}
+
+	}
+	else{
+		return redirect('cart')->withErrorMessage('There is no item in your cart to checkout');
+	}
+
+  }
+
+   protected function create(array $data){
+	
+	foreach($data as $order){
+		$successChecker=0;
+		$checker = Order::create([
+		'user_id'=>$order['user_id'],
+		'item_id'=>$order['item_id'],
+		'date'=>$order['date'],
+		'time'=>$order['time'],
+		'total_price'=>$order['total_price'],
+		]);
+		if($checker)
+			$successChecker = $successChecker + 1;
+	}
+	
+	if($successChecker>0)
+		return true;
+	else
+	return false;
+			
+   }
+   
+   /*public function showError(array $errorData){
+		$message = '';
+					foreach($errorData as $item){
+						$item_name = Item::where('item_id',$item['item_id'])->pluck('item_name')->first();
+						$message = $message.$item_name.',';}
+					if(sizeof(Cart::content())==sizeof($errorData)){
+					Cart::destroy();
+					return redirect('cart')->withErrorMessage('Sorry!! Quantity of '.$message.'You are ordering is not available right now');
+				}else{
+					Cart::destroy();
+					return redirect('cart')->withErrorMessage('Sorry!! Quantity of '.$message.'You are ordering is not available right now , but we took other orders');	
+				}
+	
+	}*/
+
+}

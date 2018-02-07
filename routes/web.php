@@ -21,13 +21,13 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/uploads', 'UploadController@index');
 Route::get('/addcategorys', 'CategoryController@index');
-Route::get('/tableReserve', 'TableController@index');
+Route::get('/tableReserve', 'tableController@index');
 
 /*Routes, Handles Error exceptions [START]*/
 Route::get('404',['as'=>'404','uses'=>'ErrorHandleController@errorCode404']);
 Route::post('upload', 'UploadController@upload');
 Route::post('/addcategory2', 'CategoryController@add');
-Route::post('/tableReserve2', 'TableController@reserve');
+Route::post('/tableReserve2', 'tableController@reserve');
 Route::get('405',['as'=>'405','uses'=>'ErrorHandleController@errorCode405']);
 /*Routes, Handles Error exceptions [END]*/
 
@@ -41,5 +41,6 @@ Route::get('item/{id}',['as'=>'item','uses'=>'MenuItemController@index']);
 /*Routes for cart [START]*/
 Route::resource('cart', 'CartController');
 Route::delete('emptyCart', 'CartController@emptyCart');
+Route::get('checkout','checkoutController@index');
 /*Routes for cart [START]*/
 

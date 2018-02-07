@@ -7,8 +7,9 @@
      <div class="info-container-main">
             <div class="panel panel-default inside-body-panel-shadow">
 
-			<div class="panel-body">
+			
         @if (sizeof(Cart::content()) > 0)
+			<div class="panel-body">
 
             <table class="table">
                 <thead>
@@ -35,6 +36,9 @@
                                 <option {{ $item->qty == 3 ? 'selected' : '' }}>3</option>
                                 <option {{ $item->qty == 4 ? 'selected' : '' }}>4</option>
                                 <option {{ $item->qty == 5 ? 'selected' : '' }}>5</option>
+                                <option {{ $item->qty == 6 ? 'selected' : '' }}>6</option>
+                                <option {{ $item->qty == 7 ? 'selected' : '' }}>7</option>
+                                <option {{ $item->qty == 8 ? 'selected' : '' }}>8</option>
                             </select>
                         </td>
                         <td>{{ $item->subtotal }} BDT.</td>
@@ -80,7 +84,7 @@
 				</div><!--end panel body-->
 				<div class="panel-footer">
             <a href="{{ url('/menu') }}" class="btn btn-primary btn-lg">Continue Shopping</a> &nbsp;
-            <a href="#" class="btn btn-success btn-lg">Proceed to Checkout</a>
+            <a href="{{ url('/checkout') }}" class="btn btn-success btn-lg">Proceed to Checkout</a>
 
             <div style="float:right">
                 <form action="{{ url('/emptyCart') }}" method="POST">
@@ -92,10 +96,10 @@
             </div><!--end panel footer-->
 
         @else
-
+			<div class="panel-footer">
             <h3>You have no items in your shopping cart</h3>
             <a href="{{ url('/menu') }}" class="btn btn-primary btn-lg">Continue Shopping</a>
-
+			</div>
         @endif
 
         <div class="spacer"></div>

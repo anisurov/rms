@@ -6,14 +6,16 @@
                     </div>
                     <div class="float-right">
                         <ul class="cart">
-						@guest
-			    <nav class="main-nav">
-			   <ul>
-                            <li><a class="register-overlayLink" href="{{ route('register') }}">Sign Up</a> </li><li> <a class="overlayLink" href="{{ route('login') }}">Sign in</a> </li>
-                            <li><i class="fa fa-shopping-cart"></i><a href="{{ url('/cart') }}">({{ Cart::instance('default')->count(false) }}) items in cart</a></li>
-			</ul>
+
+                            <li><i class="fa fa-shopping-cart"></i><a href="{{ url('/cart') }}">({{ sizeof(Cart::content()) }}) items in cart</a></li>
 			
-			</nav>
+						@guest
+			   
+			   
+                            <li><a class="register-overlayLink" href="{{ route('register') }}">Sign Up</a> </li><li> <a class="overlayLink" href="{{ route('login') }}">Sign in</a> </li>
+			
+			
+			
 						@else
                             <li class="dropdown">
 								Hi,
