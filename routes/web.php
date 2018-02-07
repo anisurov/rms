@@ -32,3 +32,9 @@ Route::get('menu',['as'=>'allMenu','uses'=>'MenuItemController@allMenu']);
 Route::get('item/{id}',['as'=>'item','uses'=>'MenuItemController@index']);
 /*Routes, For Menu,Item [END]*/
 
+
+/*Routes for cart [START]*/
+Route::resource('cart', 'CartController');
+Route::delete('emptyCart', 'CartController@emptyCart');
+/*Routes for cart [START]*/
+

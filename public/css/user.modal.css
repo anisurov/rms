@@ -30,7 +30,7 @@ body {
     font-weight: 400;
 }
  
-a.close {
+a.login-close {
     background-color: red;
     opacity:80;
     border-radius: 50%;
@@ -45,7 +45,7 @@ a.close {
     right: 1.25rem;
 }
      
-    a.close:hover {
+    a.login-close:hover {
         background-color: #1bc5b3;
         cursor: pointer;
     }

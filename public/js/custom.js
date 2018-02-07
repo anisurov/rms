@@ -87,10 +87,10 @@ jQuery(document).ready(function($) {
 	var $map = $('#footer_map, #contact_map');
 	if( $map.length ) {
 		$map.gMap({
-			address: 'Iamdesigning, 1/52,3/53, Lal Bahadhur Colony,Shringar Nagar Road, Near Gopal Naidu School, Peelamedu, Coimbatore, TN 641004',
+			address: 'Chawk Bazar, Chittagong,Bangladesh',
 			zoom: 16,
 			markers: [
-				{ 'address' : 'Iamdesigning, 1/52,3/53, Lal Bahadhur Colony,Shringar Nagar Road, Near Gopal Naidu School, Peelamedu, Coimbatore, TN 641004' }
+				{ 'address' : 'Chawk Bazar, Chittagong,Bangladesh' }
 			]
 		});
 	}

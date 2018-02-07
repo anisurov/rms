@@ -10,7 +10,9 @@
 			    <nav class="main-nav">
 			   <ul>
                             <li><a class="register-overlayLink" href="{{ route('register') }}">Sign Up</a> </li><li> <a class="overlayLink" href="{{ route('login') }}">Sign in</a> </li>
+                            <li><i class="fa fa-shopping-cart"></i><a href="{{ url('/cart') }}">({{ Cart::instance('default')->count(false) }}) items in cart</a></li>
 			</ul>
+			
 			</nav>
 						@else
                             <li class="dropdown">
@@ -33,7 +35,7 @@
                                     </li>
                                 </ul>
                             </li>
-                            <li><i class="fa fa-shopping-cart"></i>(0) items in cart | ($0.00)</li>
+                            
 						@endguest
                         </ul>
                     </div>
@@ -46,10 +48,10 @@
                     <a href="#" id="logo"></a>
                     <nav id="main-menu">
                         <ul>
-                            <li class="menu-item current-page-item"><a href="/">Home</a>
+                            <li class="menu-item  {{Request::is('/') ? "current-page-item" : "" }}"><a href="/">Home</a>
 
                             </li>
-                            <li class="menu-item"><a href="{{route('allMenu')}}">Menu</a>
+                            <li class="menu-item {{Request::is('menu') ? "current-page-item" : "" }}"><a href="{{route('allMenu')}}">Menu</a>
                                 <ul class="sub-menu">
 									@foreach(App\Menu::all() as $category)
 								<li class="menu-item"><a href="{{route('menu',$category->category_id)}}">	{{$category->category_name}}</a></li>
@@ -58,13 +60,13 @@
 								
                             </li>
 						
-							<li class="menu-item"><a href="shop-three-col.html">Event Booking</a>
+							<li class="menu-item {{Request::is('shop-three-col.html') ? "current-page-item" : "" }}"><a href="shop-three-col.html">Event Booking</a>
 							</li>
 							<li class="menu-item"><a href="{{ url('/uploads') }}">Add Menu</a></li>
 							
 							<li class="menu-item"><a href="reserve.php">Table Reservetion</a></li>
 							
-							<li class="menu-item"><a href="shop-three-col.html">Online Food Order</a></li>
+							<li class="menu-item {{Request::is('cart') ? "current-page-item" : "" }}"><a href="{{url('cart')}}">Online Food Order</a></li>
 
                             <li class="menu-item"><a href="about.html">About Ussss</a></li>
                           							

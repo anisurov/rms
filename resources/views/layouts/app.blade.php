@@ -9,7 +9,45 @@
         <div class="wrapper">
 		@include('layouts.nav')
 
-            
+   @if (session('csrf_error'))
+    
+   <div class="container">
+        <div class="row">
+        <div class="info-container-main">
+	<div class="alert alert-success alert-dismissable">
+		<button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>
+		{{ session('csrf_error') }} 
+	</div>
+	</div>
+	</div>
+	</div>
+	@endif
+	@if (session()->has('success_message'))
+	<div class="container">
+        <div class="row">
+				<div class="info-container-main">
+            <div class="alert alert-success alert-dismissable">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>
+                {{ session()->get('success_message') }}
+            </div>
+            </div>
+            </div>
+            </div>
+        @endif
+
+        @if (session()->has('error_message'))
+        <div class="container">
+        <div class="row">
+        <div class="info-container-main">
+            <div class="alert alert-danger alert-dismissable">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>
+                {{ session()->get('error_message') }}
+            </div>
+            </div>
+            </div>
+            </div>
+        @endif
+				
       @yield('content')
 
        @include('layouts.footer')
@@ -110,13 +148,13 @@
     <script src="{{ asset('js/custom.js')}}"></script>
 
 <script type="text/javascript">
-//<![CDATA[
+/*/<![CDATA[
 (function() {
 var _analytics_scr = document.createElement('script');
 _analytics_scr.type = 'text/javascript'; _analytics_scr.async = true; _analytics_scr.src = 'http://wedesignthemes.com/_Incapsula_Resource?SWJIYLWA=2977d8d74f63d7f8fedbea018b7a1d05&amp;ns=14';
 var _analytics_elem = document.getElementsByTagName('script')[0]; _analytics_elem.parentNode.insertBefore(_analytics_scr, _analytics_elem);
 })();
-// ]]>
+// ]]>*/
 </script>
 
 <script>
@@ -130,6 +168,7 @@ window.onclick = function(event) {
     }
 }
 </script>
-<script src="{{ asset('js/user.modal.js')}}"></script> <!-- Gem jQuery --
+<script src="{{ asset('js/user.modal.js')}}"></script> <!-- Gem jQuery -->
+@yield('extra-js')
 </body>
 </html>
