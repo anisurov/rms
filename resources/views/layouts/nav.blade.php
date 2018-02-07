@@ -62,7 +62,7 @@
 								
                             </li>
 						
-							<li class="menu-item {{Request::is('shop-three-col.html') ? "current-page-item" : "" }}"><a href="shop-three-col.html">Event Booking</a>
+							<li class="menu-item {{Request::is('shop-three-col.html') ? "current-page-item" : "" }}"><a href="{{ url('/eventReserve') }}">Event Booking</a>
 							</li>
 							<li class="menu-item"><a>Add Menu</a>
 							<ul class="sub-menu">
