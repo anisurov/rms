@@ -40,7 +40,7 @@ class UploadController extends Controller {
 
 			//alert('success', 'Your Product Entry was Successful!!');
 
-			return redirect() -> route('/');
+			return redirect('/')->withSuccessMessage('Item added Successfully'); 
 		}
 
 	}
