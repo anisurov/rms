@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 use DB;
 class TableController extends Controller
 {
@@ -12,6 +13,7 @@ class TableController extends Controller
    }
    public function reserve(Request $request)
    {
+		$this->validator($request->all());
 	   	$person_name = $request -> input('name');
 		$email = $request -> input('email');
 		$table_name = $request -> input('table');
@@ -28,4 +30,17 @@ class TableController extends Controller
 		DB::table('table_reservation') -> insert($data);
 		return view('welcome');
    }
+  protected function validator(array $data)
+	{
+	    return Validator::make($data, [
+	        'name' => 'required|string|max:255',
+	        'table' => 'required|string',
+	        'email' => 'required|email',
+	        'message' => 'required|string|max:800',
+	        'person' => 'required|numeric',
+	        'dat' => 'required|date',
+	        'time' => 'required|date_format:H:i',
+	    ])->validate();
+	}
+	
 }

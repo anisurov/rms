@@ -27,7 +27,7 @@
                     @foreach (Cart::content() as $item)
                     {{Cart::setTax($item->rowId, 0)}}
                     <tr>
-                        <td class="table-image"><a href="#"><img src="" alt="product" class="img-responsive img-item"></a></td>
+                        <td class="table-image"><a href="#"><img src="{{asset('uploa')}}/{{ App\Item::where('item_id',$item->name)->pluck('item_image')->first() }}" alt="product" class="img-responsive img-item"></a></td>
                         <td><a href="{{url('/menu')}}/{{$item->name}}">{{ App\Item::where('item_id',$item->name)->pluck('item_name')->first() }}</a></td>
                         <td>
                             <select class="quantity" data-id="{{ $item->rowId }}">
