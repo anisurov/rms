@@ -181,7 +181,7 @@ jQuery('#register-form button[type=submit]').click(function(e){
             setTimeout(
                 function()
                 {
-                    if(messages.errors.email){
+                    if(!(typeof messages.errors.email==='undefined')){
 		if(!jQuery('#register-form #email').closest('.form-group').find('.help-block').hasClass('alert-danger'))
 			jQuery('#register-form #email').closest('.form-group').find('.help-block').addClass('alert-danger');
                         jQuery('#register-form #email').closest('.form-group').find('.help-block').html(messages.errors.email[0]);
@@ -190,17 +190,34 @@ jQuery('#register-form button[type=submit]').click(function(e){
 			else if(messages.message){
 				if(!jQuery('#register-form #email').closest('.form-group').find('.help-block').hasClass('alert-danger'))
 			jQuery('#register-form #email').closest('.form-group').find('.help-block').addClass('alert-danger');
-                        jQuery('#register-form #email').closest('.form-group').find('.help-block').html(messages.errors.email[0]);
+                        jQuery('#register-form #email').closest('.form-group').find('.help-block').html(messages.message[0]);
 		 }
-                    if(messages.errors.name){
-		if(!jQuery('#register-form #name').closest('.form-group').find('.help-block').hasClass('alert-danger'))
-			jQuery('#register-form #name').closest('.form-group').find('.help-block').addClass('alert-danger');
+                    if(!(typeof messages.errors.name==='undefined')){
+								if(!jQuery('#register-form #name').closest('.form-group').find('.help-block').hasClass('alert-danger'))
+									jQuery('#register-form #name').closest('.form-group').find('.help-block').addClass('alert-danger');
                         jQuery('#register-form #name').closest('.form-group').find('.help-block').html(messages.errors.name[0]);
-                        
-                    }
+                   }
+                   
+                   if(!(typeof messages.errors.mnumber==='undefined')){
+								if(!jQuery('#register-form #mnumber').closest('.form-group').find('.help-block').hasClass('alert-danger'))
+									jQuery('#register-form #mnumber').closest('.form-group').find('.help-block').addClass('alert-danger');
+                        jQuery('#register-form #mnumber').closest('.form-group').find('.help-block').html(messages.errors.mnumber[0]);
+                   }
+                   
+                   if(!(typeof messages.errors.dob==='undefined')){
+								if(!jQuery('#register-form #dob').closest('.form-group').find('.help-block').hasClass('alert-danger'))
+									jQuery('#register-form #dob').closest('.form-group').find('.help-block').addClass('alert-danger');
+                        jQuery('#register-form #dob').closest('.form-group').find('.help-block').html(messages.errors.dob[0]);
+                   }
+                   
+                   if(!(typeof messages.errors.address==='undefined')){
+								if(!jQuery('#register-form #address').closest('.form-group').find('.help-block').hasClass('alert-danger'))
+									jQuery('#register-form #address').closest('.form-group').find('.help-block').addClass('alert-danger');
+                        jQuery('#register-form #address').closest('.form-group').find('.help-block').html(messages.errors.address[0]);
+                   }
 
 
-                    if(messages.errors.password){
+                    if(!(typeof messages.errors.password==='undefined')){
                 if(!jQuery('#register-form #password').closest('.form-group').find('.help-block').hasClass('alert-danger'))
 			jQuery('#register-form #password').closest('.form-group').find('.help-block').addClass('alert-danger');
                         jQuery('#register-form #password').closest('.form-group').find('.help-block').html(messages.errors.password[0]);

@@ -49,6 +49,58 @@
                 <div class="container">
                     <a href="#" id="logo"></a>
                     <nav id="main-menu">
+                   @auth
+                    @if(Auth::user()->is_admin==1)
+                    <ul>
+                            <li class="menu-item current-page-item"><a href="index.php">Home</a>
+
+                            </li>
+                            <li class="menu-item"><a href="shop-three-col.html">Menu</a>
+                                <ul class="sub-menu">
+                                    <li class="menu-item"><a href="shop-two-col.html">Indian</a>
+                                    </li>
+                                    <li class="menu-item"><a href="shop-three-col.html">Chinis</a> 
+									</li>
+                                    <li class="menu-item"><a href="shop-four-col.html">Italian</a>
+                                    </li>
+                                    <li class="menu-item"><a href="shop-detail.html">Mexican</a>
+									</li>
+									 <li class="menu-item"><a href="shop-detail.html">Bengali</a>
+									</li>
+                                </ul>
+                            </li>
+						
+							<li class="menu-item"><a href="addcategory.php">Category</a>
+							<ul class="sub-menu">
+								<li class="menu-item"><a href="{{ url('/addcategorys') }}">Add New Category</a></li>
+								<li class="menu-item"><a href="shop-two-col.html">Update Category</a>
+                                    </li>
+								<li class="menu-item"><a href="shop-three-col.html">Category info</a> 
+									</li>
+							</ul>
+							</li>
+							
+							<li class="menu-item"><a href="shop-three-col.html">Menu Item</a>
+							<ul class="sub-menu">
+								<li class="menu-item"><a href="{{ url('/uploads') }}">Add New Menu Item</a></li>
+								<li class="menu-item"><a href="shop-two-col.html">Update menu</a>
+                                    </li>
+								<li class="menu-item"><a href="shop-three-col.html">Menu info</a> 
+									</li>
+							</ul>
+							</li>
+							
+							<li class="menu-item"><a href="shop-three-col.html">User Info</a>
+							<ul class="sub-menu">
+								<li class="menu-item"><a href="shop-two-col.html">Update User</a>
+                                    </li>
+								<li class="menu-item"><a href="shop-three-col.html">View User</a> 
+									</li>
+							</ul>
+							</li>
+
+                        </ul>
+                        @else
                         <ul>
                             <li class="menu-item  {{Request::is('/') ? "current-page-item" : "" }}"><a href="/">Home</a>
 
@@ -64,22 +116,48 @@
 						
 							<li class="menu-item {{Request::is('shop-three-col.html') ? "current-page-item" : "" }}"><a href="{{ url('/eventReserve') }}">Event Booking</a>
 							</li>
-							<li class="menu-item"><a>Add Menu</a>
-							<ul class="sub-menu">
-							<li class="menu-item"><a href="{{ url('/addcategorys') }}">Add New Category</a></li>
-							<li class="menu-item"><a href="{{ url('/uploads') }}">Add New Menu Item</a></li>
-							</ul>
-							</li>
+							
 							
 							<li class="menu-item"><a href="{{ url('/tableReserve') }}">Table Reservetion</a></li>
 							
 							<li class="menu-item {{Request::is('cart') ? "current-page-item" : "" }}"><a href="{{url('cart')}}">Online Food Order</a></li>
 
-                            <li class="menu-item"><a href="about.html">About Ussss</a></li>
+                            <li class="menu-item"><a href="about.html">About Us</a></li>
                           							
 							<li class="menu-item"><a href="shop-three-col.html">Contact Us</a></li>
  
                         </ul>
+                    
+                      @endif
+                      @else                  
+                        <ul>
+                            <li class="menu-item  {{Request::is('/') ? "current-page-item" : "" }}"><a href="/">Home</a>
+
+                            </li>
+                            <li class="menu-item {{Request::is('menu') ? "current-page-item" : "" }}"><a href="{{route('allMenu')}}">Menu</a>
+                                <ul class="sub-menu">
+									@foreach(App\Menu::all() as $category)
+								<li class="menu-item"><a href="{{route('menu',$category->category_id)}}">	{{$category->category_name}}</a></li>
+									@endforeach
+                                </ul>
+								
+                            </li>
+						
+							<li class="menu-item {{Request::is('shop-three-col.html') ? "current-page-item" : "" }}"><a href="shop-three-col.html">Event Booking</a>
+							</li>
+						
+							
+							<li class="menu-item"><a href="{{ url('/tableReserve') }}">Table Reservetion</a></li>
+							
+							<li class="menu-item {{Request::is('cart') ? "current-page-item" : "" }}"><a href="{{url('cart')}}">Online Food Order</a></li>
+
+                            <li class="menu-item"><a href="about.html">About Us</a></li>
+                          							
+							<li class="menu-item"><a href="shop-three-col.html">Contact Us</a></li>
+ 
+                        </ul>
+                    
+                      @endauth
                     </nav>
                 </div>
                 <div class="header-bottom"></div>
