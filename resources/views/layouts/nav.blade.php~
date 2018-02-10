@@ -116,7 +116,12 @@
 						
 							<li class="menu-item {{Request::is('shop-three-col.html') ? "current-page-item" : "" }}"><a href="shop-three-col.html">Event Booking</a>
 							</li>
+							<li class="menu-item"><a>Add Menu</a>
+							<ul class="sub-menu">
 							
+							
+							</ul>
+							</li>
 							
 							<li class="menu-item"><a href="{{ url('/tableReserve') }}">Table Reservetion</a></li>
 							
@@ -145,7 +150,12 @@
 						
 							<li class="menu-item {{Request::is('shop-three-col.html') ? "current-page-item" : "" }}"><a href="shop-three-col.html">Event Booking</a>
 							</li>
-						
+							<li class="menu-item"><a>Add Menu</a>
+							<ul class="sub-menu">
+							<li class="menu-item"><a href="{{ url('/addcategorys') }}">Add New Category</a></li>
+							<li class="menu-item"><a href="{{ url('/uploads') }}">Add New Menu Item</a></li>
+							</ul>
+							</li>
 							
 							<li class="menu-item"><a href="{{ url('/tableReserve') }}">Table Reservetion</a></li>
 							
