@@ -52,10 +52,11 @@
                    @auth
                     @if(Auth::user()->is_admin==1)
                     <ul>
-                            <li class="menu-item current-page-item"><a href="index.php">Home</a>
+                            <li class="menu-item {{Request::is('/') ? "current-page-item" : "" }}"><a href="/">Home</a>
 
                             </li>
-                            <li class="menu-item"><a href="shop-three-col.html">Menu</a>
+                            <li class="menu-item"><a href="shop-three-col.html">Menu				
+				</a>
                                 <ul class="sub-menu">
                                     <li class="menu-item"><a href="shop-two-col.html">Indian</a>
                                     </li>
@@ -70,9 +71,15 @@
                                 </ul>
                             </li>
 						
+							<li class="menu-item {{Request::is('reservation') ? "current-page-item" : "" }}">
+								<a href="{{url('/reservation')}}">Event Booking
+									<span class="label label-danger">{{App\Event::where('status',0)->count()}}</span>
+								</a>
+							</li>
+							<li class="menu-item {{Request::is('addcategorys') ? "current-page-item" : "" }}"><a href="addcategory.php">Table Booking</a></li>
 							<li class="menu-item"><a href="addcategory.php">Category</a>
 							<ul class="sub-menu">
-								<li class="menu-item"><a href="{{ url('/addcategorys') }}">Add New Category</a></li>
+								<li class="menu-item {{Request::is('addcategorys') ? "current-page-item" : "" }}"><a href="{{ url('/addcategorys') }}">Add New Category</a></li>
 								<li class="menu-item"><a href="shop-two-col.html">Update Category</a>
                                     </li>
 								<li class="menu-item"><a href="shop-three-col.html">Category info</a> 
@@ -143,7 +150,8 @@
 								
                             </li>
 						
-							<li class="menu-item {{Request::is('shop-three-col.html') ? "current-page-item" : "" }}"><a href="shop-three-col.html">Event Booking</a>
+							
+							<li class="menu-item {{Request::is('shop-three-col.html') ? "current-page-item" : "" }}"><a href="{{ url('/eventReserve') }}">Event Booking</a>
 							</li>
 						
 							

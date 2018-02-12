@@ -41,7 +41,7 @@
 	background-color: rgba(0,255,40, 0.2);
 }
 .dropdown-menu {
-background-color:#245269;
+background-color:#A44823;
 color:white;
 }
 .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:focus, .navbar-default .navbar-nav > .open > a:hover {
@@ -121,3 +121,13 @@ a:focus, a:hover {
 	color: #216a94;
 	text-decoration: none;
 }
+
+.label{
+	position: relative;
+	top: -12px;
+	right: 7px;
+	font-size: 9px;
+	border-radius: 50%;
+}
+}
+

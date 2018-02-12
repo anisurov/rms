@@ -36,9 +36,9 @@ class TableController extends Controller
 	        'name' => 'required|string|max:255',
 	        'table' => 'required|string',
 	        'email' => 'required|email',
-	        'message' => 'required|string|max:800',
-	        'person' => 'required|numeric',
-	        'dat' => 'required|date',
+	        'message' => 'string|max:800',
+	        'person' => 'numeric|between:1,10',
+	        'dat' => 'required|date|after:yesterday',
 	        'time' => 'required|date_format:H:i',
 	    ])->validate();
 	}

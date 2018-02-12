@@ -98,19 +98,19 @@ jQuery('#login-form button[type=submit]').click(function(e){
         },
         error : function(data){
             var messages = jQuery.parseJSON(data.responseText);
-            console.log(messages.errors.user_email[0]);
+            //console.log(messages.errors.user_email[0]);
 
             setTimeout(
                 function()
                 {
-                    if(messages.errors.user_email){
+                    if(!(typeof messages.errors.user_email==='undefined')){
 		if(!jQuery('#login-form #email').closest('.form-group').find('.help-block').hasClass('alert-danger'))
 			jQuery('#login-form #email').closest('.form-group').find('.help-block').addClass('alert-danger');
                         jQuery('#login-form #email').closest('.form-group').find('.help-block').html(messages.errors.user_email[0]);
                         
                     }
 
-                    if(messages.errors.password){
+                    if(!(typeof messages.errors.password==='undefined')){
                 if(!jQuery('#login-form #password').closest('.form-group').find('.help-block').hasClass('alert-danger'))
 			jQuery('#login-form #password').closest('.form-group').find('.help-block').addClass('alert-danger');
                         jQuery('#login-form #password').closest('.form-group').find('.help-block').html(messages.errors.password[0]);

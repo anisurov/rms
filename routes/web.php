@@ -23,6 +23,8 @@ Route::get('/uploads', 'UploadController@index');
 Route::get('/addcategorys', 'CategoryController@index');
 Route::get('/tableReserve', 'tableController@index');
 Route::get('/eventReserve', 'eventController@index');
+Route::get('/reservation', 'eventController@showAllreservation')->middleware(['auth','execuser']);
+Route::post('/reservation', 'eventController@approveReservation')->middleware(['auth','execuser']);
 
 /*Routes, Handles Error exceptions [START]*/
 Route::get('404',['as'=>'404','uses'=>'ErrorHandleController@errorCode404']);

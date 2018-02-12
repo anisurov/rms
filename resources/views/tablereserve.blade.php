@@ -3,8 +3,8 @@
 @section('content')	
 <div class="container">
 	<div class="row">
-		<div class="col-md-12 ">
-			<div class="panel panel-info">
+		<div class="info-container-main">
+			<div class="panel panel-default inside-body-panel-shadow">
 			<div class="panel-heading  text-lest">
 					<strong><h2>Reserve Table<h2></strong>
 				</div>
