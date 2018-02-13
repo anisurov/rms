@@ -13,4 +13,5 @@ class Table extends Model
     protected $fillable = [
         'date','time','noofperson','message','user_id','status','table_name',
     ];
+	
 }
