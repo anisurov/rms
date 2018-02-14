@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Table;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use DB;
@@ -26,10 +27,17 @@ class TableController extends Controller
 			$user_id = $value -> user_id;
 		}
 		$data= array('date'=>$dat , 'time'=>$tim, 'noofperson'=>$person_no, 
-		'message' => $message, 'user_id' => $user_id , 'status'=> '1' , 'table_name' => $table_name);
+		'message' => $message, 'user_id' => $user_id , 'status'=> '0' , 'table_name' => $table_name);
 		DB::table('table_reservation') -> insert($data);
 		return view('welcome');
    }
+   	public function showAllreservation () {
+		$table=Table::orderBy('date', 'desc')
+               ->paginate(5);
+			  
+		return view('showTablreservation',compact('table'));
+	
+	}
   protected function validator(array $data)
 	{
 	    return Validator::make($data, [
