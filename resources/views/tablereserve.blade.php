@@ -14,7 +14,7 @@
 					   <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
 							<label for="name" class="col-md-12 control-label">Name*</label>
 							<div class="col-md-12">
-								<input type="text" class="form-control" name="name">
+								<input type="text" class="form-control" name="name" value="{{Auth::user()->user_name}}">
                                 				@if ($errors->has('name'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('name') }}</strong>
@@ -25,7 +25,7 @@
 						  <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
 							<label for="email" class="col-md-12 control-label">Email Address*</label>
 							<div class="col-md-12">
-								<input type="text" class="form-control" name="email">
+								<input type="text" class="form-control" name="email" value="{{Auth::user()->user_email}}">
                                 @if ($errors->has('email'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('email') }}</strong>

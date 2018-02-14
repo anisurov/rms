@@ -76,7 +76,11 @@
 									<span class="label label-danger">{{App\Event::where('status',0)->count()}}</span>
 								</a>
 							</li>
-							<li class="menu-item {{Request::is('addcategorys') ? "current-page-item" : "" }}"><a href="{{ url('/table_reservation') }}">Table Booking</a></li>
+							<li class="menu-item {{Request::is('table_reservation') ? "current-page-item" : "" }}">
+								<a href="{{ url('/table_reservation') }}">Table Booking
+									<span class="label label-danger">{{App\Table::where('status',0)->count()}}</span>						
+								</a>
+							</li>
 							<li class="menu-item"><a href="addcategory.php">Category</a>
 							<ul class="sub-menu">
 								<li class="menu-item {{Request::is('addcategorys') ? "current-page-item" : "" }}"><a href="{{ url('/addcategorys') }}">Add New Category</a></li>
