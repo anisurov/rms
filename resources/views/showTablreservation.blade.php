@@ -35,10 +35,10 @@
 	                        <td>{{$reservationData->noofperson}}</td><td>{{$reservationData->message}}</td>
                        
                         <td>
-                            <form action="{{url('/reservation')}}" method="POST" class="side-by-side">
+                            <form action="{{url('/table_reservation')}}" method="POST" class="side-by-side">
                                 {!! csrf_field() !!}
                                 <input type="hidden" name="status" value="{{$reservationData->status}}">
-                                <input type="hidden" name="eventID" value="{{$reservationData->event_id}}">
+                                <input type="hidden" name="eventID" value="{{$reservationData->id}}">
                                 <input type="submit" class="btn {{$reservationData->status==0 ? 'btn-danger':'btn-success'}} btn-sm" value="{{$reservationData->status==0 ? 'Approve':'Approved'}}">
                             </form>
                         </td>

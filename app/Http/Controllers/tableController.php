@@ -29,9 +29,10 @@ class TableController extends Controller
 		$data= array('date'=>$dat , 'time'=>$tim, 'noofperson'=>$person_no, 
 		'message' => $message, 'user_id' => $user_id , 'status'=> '0' , 'table_name' => $table_name);
 		DB::table('table_reservation') -> insert($data);
-		return view('welcome');
+		return redirect('/')->withSuccessMessage("thanks!for your booking");
    }
-   	public function showAllreservation () {
+   	
+   public function showAllreservation () {
 		$table=Table::orderBy('date', 'desc')
                ->paginate(5);
 			  
@@ -49,6 +50,37 @@ class TableController extends Controller
 	        'dat' => 'required|date|after:yesterday',
 	        'time' => 'required|date_format:H:i',
 	    ])->validate();
+	}
+	
+  public function approveReservation(Request $request){
+		if($request->status==0) {
+			if(Table::where('id',$request->eventID)->update(['status'=>1])){
+				$title = "Table reservation approval";
+				$content['subject'] = "Table reservation approval";
+				$users = User::where('user_id',Table::where('id',$request->eventID)->pluck('user_id')->first())->get();
+				$content['customer']="customer";
+				$content['pay']="yes";
+				$content['reservation']="Table";
+				//var_dump($users);
+				if($users) {
+					foreach($users as $user){
+							$email = $user->user_email;
+							$content['customer']=$user->user_name;
+							//var_dump($user);
+					}				
+				}
+			
+				emailController::notify($title,$content,$email);
+				return redirect('/')->withSuccessMessage('Table approved successfully');
+			}else
+			return redirect('/')->withErrorMessage('Table approval failed');		
+		}
+		if($request->status==1) {
+			if(Table::where('id',$request->eventID)->update(['status'=>0])){
+				return redirect('/')->withSuccessMessage('Table disapproved successfully');
+			}
+			return redirect('/')->withErrorMessage('Table disapproval failed');		
+		}	
 	}
 	
 }
