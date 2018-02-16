@@ -55,21 +55,7 @@
                             <li class="menu-item {{Request::is('/') ? "current-page-item" : "" }}"><a href="/">Home</a>
 
                             </li>
-                            <li class="menu-item"><a href="shop-three-col.html">Menu				
-				</a>
-                                <ul class="sub-menu">
-                                    <li class="menu-item"><a href="shop-two-col.html">Indian</a>
-                                    </li>
-                                    <li class="menu-item"><a href="shop-three-col.html">Chinis</a> 
-									</li>
-                                    <li class="menu-item"><a href="shop-four-col.html">Italian</a>
-                                    </li>
-                                    <li class="menu-item"><a href="shop-detail.html">Mexican</a>
-									</li>
-									 <li class="menu-item"><a href="shop-detail.html">Bengali</a>
-									</li>
-                                </ul>
-                            </li>
+                            
 						
 							<li class="menu-item {{Request::is('reservation') ? "current-page-item" : "" }}">
 								<a href="{{url('/reservation')}}">Event Booking
@@ -81,6 +67,13 @@
 									<span class="label label-danger">{{App\Table::where('status',0)->count()}}</span>						
 								</a>
 							</li>
+							
+							<li class="menu-item {{Request::is('table_reservation') ? "current-page-item" : "" }}">
+								<a href="{{ url('/onlineorder') }}">Online order
+															
+								</a>
+							</li>							
+							
 							<li class="menu-item"><a href="addcategory.php">Category</a>
 							<ul class="sub-menu">
 								<li class="menu-item {{Request::is('addcategorys') ? "current-page-item" : "" }}"><a href="{{ url('/addcategorys') }}">Add New Category</a></li>

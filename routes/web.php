@@ -28,6 +28,7 @@ Route::post('/reservation', 'eventController@approveReservation')->middleware(['
 Route::get('/users', 'userController@index')->middleware(['auth','execuser']);
 Route::get('/table_reservation', 'tableController@showAllreservation')->middleware(['auth','execuser']);
 Route::post('/table_reservation', 'tableController@approveReservation')->middleware(['auth','execuser']);
+Route::get('/onlineorder', 'OnlineOrderController@showAllOrder')->middleware(['auth','execuser']);
 
 /*Routes, Handles Error exceptions [START]*/
 Route::get('404',['as'=>'404','uses'=>'ErrorHandleController@errorCode404']);
