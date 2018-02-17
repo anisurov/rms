@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title','Add Menu Here')
+@section('title','Online Order')
 @section('content')	
 <div class="container">
 	<div class="row">

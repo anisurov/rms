@@ -129,5 +129,30 @@ a:focus, a:hover {
 	font-size: 9px;
 	border-radius: 50%;
 }
+
+.form-horizontal .form-group {
+	margin-left: 0px;
+	margin-right:0px;
+}
+
+.form-control{
+	background-color: #FFF;
+	border-color: #9b8323;
+	color: #999;
+	height: auto;
+}
+.input-group-addon{
+	background-color: #A44823;
+	color: #000;	
+	border-color: #9b8323;	
+}
+button, input, optgroup, select, textarea {
+     color: #9b8323;     
+}
+
+input[type="text"], input[type="email"], input[type="password"], input[type="date"], input[type="time"], textarea, .reserve-frm p select {
+	 background-color: #FFF; 
+	 border: 1px solid #DAD6CF; 
+	 color: #464646; 
 }
 

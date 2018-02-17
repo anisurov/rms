@@ -192,14 +192,14 @@
 	fieldset{ border:1px solid #efefef; padding:15px; margin:0 0 20px 0; }
 	legend{ font-weight: bold; }
 	
-	input[type=text], input[type=email], input[type=password], input[type=date], input[type="time"], textarea, select { border:1px solid; padding:10px; display:block; font-size:14px; margin:10px 0 10px; }
+	input[type=text], input[type=email], input[type=password], input[type=date], input[type="time"], textarea, select { border:1px solid; padding:10px; display:block; font-size:14px; /*margin:10px 0 10px;*/ }
 	input[type=text], input[type=email], input[type=password], input.text, textarea { width:96.5%; }
 	.dt-sc-one-half input[type=text], .dt-sc-one-half input[type=email], .dt-sc-one-half input[type=password], .dt-sc-one-half input.text, .dt-sc-one-half textarea { width:93.3%; }
 	textarea { height:121px; overflow:auto; }
 	
 	input.error, textarea.error { border-color: #CE0000 !important; }
 
-	select{ background:#ededed; border:1px solid #c4c4c4; padding:10px; margin:10px 0 10px; display:block; }
+	select{ background:#ededed; border:1px solid #c4c4c4; padding:10px; /*margin:10px 0 10px;*/ display:block; }
 	
 	input[type=submit], button, input[type=button] { float:right; cursor:pointer; }	
 	

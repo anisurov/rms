@@ -2,12 +2,12 @@
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     	<meta name="csrf-token" content="{{ csrf_token() }}" />
-	<title>EkhuniChai Online Food ordering &amp; Resturent reservstion website </title>
+	<title>@yield('title')|EkhuniChai Online Food ordering &amp; Resturent reservstion website </title>
     
     <meta name="description" content="" />
-	<meta name="author" content="" />
+	<meta name="author" content="Dhrubo" />
     
-   
+
 	<!--**CSS user Modal**-->
        <link href='http://fonts.googleapis.com/css?family=PT+Sans:400,700' rel='stylesheet' type='text/css'>
       <!-- <link rel="stylesheet" href="css/resetem.css"> <!-- CSS reset -->

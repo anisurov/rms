@@ -20,7 +20,7 @@
 						</div>
 						<div class="form-group">
 							<div class="col-md-8 col-md-offset-4">
-								<button type="submit" class="btn btn-primary">
+								<button type="submit" class="dt-sc-button small theme-btn">
 									Done
 								</button>
 								<button type="submit" name="addm" value="true" class="btn btn-primary">
