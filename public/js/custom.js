@@ -88,7 +88,7 @@ jQuery(document).ready(function($) {
 	if( $map.length ) {
 		$map.gMap({
 			address: 'Chawk Bazar, Chittagong,Bangladesh',
-			zoom: 16,
+			zoom: 15,
 			markers: [
 				{ 'address' : 'Chawk Bazar, Chittagong,Bangladesh' }
 			]

@@ -56,6 +56,9 @@
 
                             </li>
                             
+                     <li class="menu-item {{Request::is(route('rating')) ? "current-page-item" : "" }}"><a href="{{route('rating')}}">Update Rating</a>
+
+                            </li>
 						
 							<li class="menu-item {{Request::is('reservation') ? "current-page-item" : "" }}">
 								<a href="{{url('/reservation')}}">Event Booking

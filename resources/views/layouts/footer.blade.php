@@ -51,26 +51,26 @@
                                 <ul>
                                     <li>
                                         <a href="#">
-                                            <img src="images/sociable/hover/twitter.png" alt="twitter.png" title="" />
-                                            <img src="images/sociable/twitter.png" alt="twitter.png" title="" />
+                                            <img src="{{asset('images/sociable/hover/twitter.png')}}" alt="twitter.png" title="" />
+                                            <img src="{{asset('images/sociable/twitter.png')}}" alt="twitter.png" title="" />
                                         </a>
                                     </li>
                                     <li>
                                         <a href="#">
-                                            <img src="images/sociable/hover/google.png" alt="twitter.png" title="" />
-                                            <img src="images/sociable/google.png" alt="twitter.png" title="" />
+                                            <img src="{{asset('images/sociable/hover/google.png')}}" alt="google.png" title="" />
+                                            <img src="{{asset('images/sociable/google.png')}}" alt="google.png" title="" />
                                         </a>
                                     </li>
                                     <li>
                                         <a href="#">
-                                            <img src="images/sociable/hover/facebook.png" alt="twitter.png" title="" />
-                                            <img src="images/sociable/facebook.png" alt="twitter.png" title="" />
+                                            <img src="{{asset('images/sociable/hover/facebook.png')}}" alt="facebook.png" title="" />
+                                            <img src="{{asset('images/sociable/facebook.png')}}" alt="facebook.png" title="" />
                                         </a>
                                     </li>
                                     <li>
                                         <a href="#">
-                                            <img src="images/sociable/hover/pinterest.png" alt="twitter.png" title="" />
-                                            <img src="images/sociable/pinterest.png" alt="twitter.png" title="" />
+                                            <img src="{{asset('images/sociable/hover/pinterest.png')}}" alt="pinterest.png" title="" />
+                                            <img src="{{asset('images/sociable/pinterest.png')}}" alt="pinterest.png" title="" />
                                         </a>
                                     </li>
                                 </ul>
@@ -82,9 +82,9 @@
                     <div class="container">
                         <p class="copyright">&copy; {{date('Y')}} <a href="http://themeforest.net/user/BuddhaThemes/portfolio">SM corp</a>.Ekhuni Chai </p>
                         <ul class="footer-links">
-                            <li><a href="index.html">Home</a>/</li> 
-                            <li><a href="menu.html">Menu</a>/</li>
-                            <li><a href="shop.html">Shop</a>/</li>
+                            <li><a href="{{url('/')}}">Home</a>/</li> 
+                            <li><a href="{{url('menu')}}">Menu</a>/</li>
+                            <li><a href="{{url('menu')}}">Shop</a>/</li>
                             <li><a href="about.html">About</a>/</li>
                             <li><a href="features.html">Features</a>/</li>
                             <li><a href="blog.html">Blog</a>/</li>
