@@ -30,14 +30,14 @@
                                     <p>Tue - Sun|5.30pm-10.00 pm <span>BOOKINGS CLOSED on Mondays &amp; Tuesday</span> </p>
                                 </li>
                             </ul>
-                            <a href="#" class="dt-sc-button small theme-btn">Book Now</a>
+                            <a href="{{url('tableReserve')}}" class="dt-sc-button small theme-btn">Book Now</a>
                         </aside>
                     </div>
                     <div class="dt-sc-one-half column">
                         <h3 class="widgettitle">Contact Us</h3>
                         <div class="dt-sc-one-half column first">
                             <aside class="widget widget_text">
-                                <div id="footer_map"> </div>                        
+                                <div id="footer_map"> </div>
                             </aside>
                         </div>
                         <div class="dt-sc-one-half column">
@@ -82,7 +82,7 @@
                     <div class="container">
                         <p class="copyright">&copy; {{date('Y')}} <a href="http://themeforest.net/user/BuddhaThemes/portfolio">SM corp</a>.Ekhuni Chai </p>
                         <ul class="footer-links">
-                            <li><a href="{{url('/')}}">Home</a>/</li> 
+                            <li><a href="{{url('/')}}">Home</a>/</li>
                             <li><a href="{{url('menu')}}">Menu</a>/</li>
                             <li><a href="{{url('menu')}}">Shop</a>/</li>
                             <li><a href="about.html">About</a>/</li>
@@ -94,4 +94,3 @@
                     </div>
                 </div>
             </footer>
-        

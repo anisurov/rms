@@ -8,14 +8,14 @@
                         <ul class="cart">
 
                             <li><i class="fa fa-shopping-cart"></i><a href="{{ url('/cart') }}">({{ sizeof(Cart::content()) }}) items in cart</a></li>
-			
+
 						@guest
-			   
-			   
+
+
                             <li><a class="register-overlayLink" href="{{ route('register') }}">Sign Up</a> </li><li> <a class="overlayLink" href="{{ route('login') }}">Sign in</a> </li>
-			
-			
-			
+
+
+
 						@else
                             <li class="dropdown">
 								Hi,
@@ -37,7 +37,7 @@
                                     </li>
                                 </ul>
                             </li>
-                            
+
 						@endguest
                         </ul>
                     </div>
@@ -55,11 +55,11 @@
                             <li class="menu-item {{Request::is('/') ? "current-page-item" : "" }}"><a href="/">Home</a>
 
                             </li>
-                            
+
                      <li class="menu-item {{Request::is(route('rating')) ? "current-page-item" : "" }}"><a href="{{route('rating')}}">Update Rating</a>
 
                             </li>
-						
+
 							<li class="menu-item {{Request::is('reservation') ? "current-page-item" : "" }}">
 								<a href="{{url('/reservation')}}">Event Booking
 									<span class="label label-danger">{{App\Event::where('status',0)->count()}}</span>
@@ -67,41 +67,41 @@
 							</li>
 							<li class="menu-item {{Request::is('table_reservation') ? "current-page-item" : "" }}">
 								<a href="{{ url('/table_reservation') }}">Table Booking
-									<span class="label label-danger">{{App\Table::where('status',0)->count()}}</span>						
+									<span class="label label-danger">{{App\Table::where('status',0)->count()}}</span>
 								</a>
 							</li>
-							
-							<li class="menu-item {{Request::is('table_reservation') ? "current-page-item" : "" }}">
+
+							<li class="menu-item {{Request::is('onlineorder') ? "current-page-item" : "" }}">
 								<a href="{{ url('/onlineorder') }}">Online order
-															
+
 								</a>
-							</li>							
-							
+							</li>
+
 							<li class="menu-item"><a href="addcategory.php">Category</a>
 							<ul class="sub-menu">
 								<li class="menu-item {{Request::is('addcategorys') ? "current-page-item" : "" }}"><a href="{{ url('/addcategorys') }}">Add New Category</a></li>
-								<li class="menu-item"><a href="shop-two-col.html">Update Category</a>
+								<li class="menu-item"><a href="#">Update Category</a>
                                     </li>
-								<li class="menu-item"><a href="shop-three-col.html">Category info</a> 
+								<li class="menu-item"><a href="#">Category info</a>
 									</li>
 							</ul>
 							</li>
-							
-							<li class="menu-item"><a href="shop-three-col.html">Menu Item</a>
+
+							<li class="menu-item"><a href="#">Menu Item</a>
 							<ul class="sub-menu">
 								<li class="menu-item"><a href="{{ url('/uploads') }}">Add New Menu Item</a></li>
 								<li class="menu-item"><a href="shop-two-col.html">Update menu</a>
                                     </li>
-								<li class="menu-item"><a href="shop-three-col.html">Menu info</a> 
+								<li class="menu-item"><a href="shop-three-col.html">Menu info</a>
 									</li>
 							</ul>
 							</li>
-							
+
 							<li class="menu-item"><a href="shop-three-col.html">User Info</a>
 							<ul class="sub-menu">
 								<li class="menu-item"><a href="shop-two-col.html">Update User</a>
                                     </li>
-								<li class="menu-item"><a href="{{ url('/users') }}">View User</a> 
+								<li class="menu-item"><a href="{{ url('/users') }}">View User</a>
 									</li>
 							</ul>
 							</li>
@@ -118,25 +118,25 @@
 								<li class="menu-item"><a href="{{route('menu',$category->category_id)}}">	{{$category->category_name}}</a></li>
 									@endforeach
                                 </ul>
-								
+
                             </li>
-						
+
 							<li class="menu-item {{Request::is('shop-three-col.html') ? "current-page-item" : "" }}"><a href="{{ url('/eventReserve') }}">Event Booking</a>
 							</li>
-							
-							
+
+
 							<li class="menu-item"><a href="{{ url('/tableReserve') }}">Table Reservetion</a></li>
-							
+
 							<li class="menu-item {{Request::is('cart') ? "current-page-item" : "" }}"><a href="{{url('cart')}}">Online Food Order</a></li>
 
                             <li class="menu-item"><a href="about.html">About Us</a></li>
-                          							
+
 							<li class="menu-item"><a href="shop-three-col.html">Contact Us</a></li>
- 
+
                         </ul>
-                    
+
                       @endif
-                      @else                  
+                      @else
                         <ul>
                             <li class="menu-item  {{Request::is('/') ? "current-page-item" : "" }}"><a href="/">Home</a>
 
@@ -147,24 +147,24 @@
 								<li class="menu-item"><a href="{{route('menu',$category->category_id)}}">	{{$category->category_name}}</a></li>
 									@endforeach
                                 </ul>
-								
+
                             </li>
-						
-							
-							<li class="menu-item {{Request::is('shop-three-col.html') ? "current-page-item" : "" }}"><a href="{{ url('/eventReserve') }}">Event Booking</a>
+
+
+							<li class="menu-item {{Request::is('eventReserve') ? "current-page-item" : "" }}"><a href="{{ url('/eventReserve') }}">Event Booking</a>
 							</li>
-						
-							
+
+
 							<li class="menu-item"><a href="{{ url('/tableReserve') }}">Table Reservetion</a></li>
-							
+
 							<li class="menu-item {{Request::is('cart') ? "current-page-item" : "" }}"><a href="{{url('cart')}}">Online Food Order</a></li>
 
                             <li class="menu-item"><a href="about.html">About Us</a></li>
-                          							
+
 							<li class="menu-item"><a href="shop-three-col.html">Contact Us</a></li>
- 
+
                         </ul>
-                    
+
                       @endauth
                     </nav>
                 </div>

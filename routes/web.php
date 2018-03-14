@@ -29,6 +29,7 @@ Route::get('/users', 'userController@index')->middleware(['auth','execuser']);
 Route::get('/table_reservation', 'tableController@showAllreservation')->middleware(['auth','execuser']);
 Route::post('/table_reservation', 'tableController@approveReservation')->middleware(['auth','execuser']);
 Route::get('/onlineorder', 'OnlineOrderController@showAllOrder')->middleware(['auth','execuser']);
+Route::post('/onlineorder', 'OnlineOrderController@approve')->middleware(['auth','execuser']);
 Route::get('/upadte/rating', 'RatingController@update')->name('rating')->middleware(['auth','execuser']);
 
 /*Routes, Handles Error exceptions [START]*/
@@ -59,4 +60,3 @@ Route::get('review/addform','ReviewController@showAddForm')->name('reviewform')-
 Route::post('review/add','ReviewController@store')->name('savereview')->middleware(['auth']);
 Route::get('review/updateform','ReviewController@showUpdateForm')->name('reviewupdatewform')->middleware(['auth']);
 Route::post('review/update','ReviewController@update')->name('updatereview')->middleware(['auth']);
-
