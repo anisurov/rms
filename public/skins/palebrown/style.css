@@ -20,7 +20,7 @@ header { border-bottom:2px solid #8b3a1a; background:#e2ded3; }
 header.header1 .header-bottom { background:url(images/header-bottom.png) repeat-x;  }
 .top-bar , footer { background:url(images/top-bg.jpg) repeat; }
 .top-bar { border-bottom-color:#8b3a1a; }
-.top-bar, .top-bar .float-left p i { text-shadow:1px 1px 0px #7d3416; } 
+.top-bar, .top-bar .float-left p i { text-shadow:1px 1px 0px #7d3416; }
 .top-bar .cart li { border-right-color: #b66849; border-left-color:#7d3416; }
 .top-bar .cart li a:hover { color:#ca876c; }
 
@@ -106,7 +106,7 @@ footer .widget_text a:hover { color:#ecd7a9; }
 
 footer .theme-btn, .intro-text.type3 .theme-btn { background-color:#a1bd57; border:5px solid #bcdb6b; box-shadow: inset 1px 1px 0px 0px #70a352; text-shadow:-1px -1px 0px #8ca647; }
 footer .theme-btn:hover, .intro-text.type3 .theme-btn:hover { background-color:#92af47; }
-	
+
 .products .product span.price:before, .bg-menu .price:before { background:url(images/price-tag-before.png) no-repeat; }
 .menu .entry-thumb .code:before { background: url(images/code-before.png) no-repeat; }
 .products .product span.price, .menu .entry-thumb .code, .bg-menu .price { background:#a1bd57; }
@@ -186,7 +186,7 @@ ul.commentlist li .author-name span, ul.commentlist li .author-name i { color:#c
 
 .service-ico li span { background:url(images/ser-icon-bg.png) no-repeat; }
 
-.theme-ribbon { background-position:0px -122px; }
+.theme-ribbon { background-position:70px -122px; }
 
 .dt-sc-pullquote1, .dt-sc-pullquote2, .dt-sc-pullquote3, .dt-sc-pullquote6  { background:#ad957e; color:#fff; }
 .dt-sc-pullquote1, .dt-sc-pullquote2, .dt-sc-pullquote3, .dt-sc-pullquote4, .dt-sc-pullquote5, .dt-sc-pullquote6 { border-color:#a28364; }
