@@ -2,8 +2,8 @@
 @section('content')
 <div class="container">
 	<div class="row">
-		<div class="info-container-main">
-            <div class="panel panel-default inside-body-panel-shadow">
+		<div class="col-md-12 ">
+			<div class="panel panel-info">
 				<div class="panel-heading  text-center">
 					<strong>Entry Menu Here</strong>
 				</div>
@@ -81,7 +81,7 @@
 							<label for="item_price" class="col-md-12 control-label">Select
 								image to upload:</label>
 							<div class="col-md-12">
-								<input type="file" name="file" id="file"> <input type="hidden"
+								<input type="file" name="file1" id="file"> <input type="hidden"
 									value="{{ csrf_token() }}" name="_token"> 
 									@if($errors->has('file'))
                                     <span class="help-block">
@@ -90,9 +90,31 @@
                                 @endif
 							</div>
 						</div>
+							<div class="form-group {{ $errors->has('file2') ? ' has-error' : '' }}">
+							<div class="col-md-12">
+								<input type="file" name="file" id="file2"> <input type="hidden"
+									value="{{ csrf_token() }}" name="_token"> 
+									@if($errors->has('file'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('file') }}</strong>
+                                    </span>
+                                @endif
+							</div>
+						</div>
+							<div class="form-group {{ $errors->has('file3') ? ' has-error' : '' }}">
+							<div class="col-md-12">
+								<input type="file" name="file" id="file3"> <input type="hidden"
+									value="{{ csrf_token() }}" name="_token"> 
+									@if($errors->has('file'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('file') }}</strong>
+                                    </span>
+                                @endif
+							</div>
+						</div> 
 						<div class="form-group">
 							<div class="col-md-8 col-md-offset-4">
-								<button type="submit" class="dt-sc-button small theme-btn">Done</button>
+								<button type="submit" class="btn btn-primary">Done</button>
 								<button type="submit" name="addm" value="true"
 									class="btn btn-primary">Add more ?</button>
 							</div>

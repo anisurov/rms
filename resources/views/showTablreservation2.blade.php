@@ -6,22 +6,27 @@
 		<div class="info-container-main">
 			<div class="panel panel-default inside-body-panel-shadow">
 			<div class="panel-heading  text-lest">
-					<strong><h2>Event Reservation<h2></strong>
+					<strong><h2>Table Reservation<h2></strong>
 				</div>
 					<div class="panel-body">
 					<table class="table">
                 <thead>
                     <tr>
-                        <th>Event Type</th>
-                        <th>Date/Time</th>                     
+                        <th>Table Name</th>                      
+                        <th>Date/Time of Reservation</th>                                        
+                        <th>No of Person</th>						
+                        
                     </tr>
                 </thead>
 
                 <tbody>                
-                    @foreach ($reserve as $reservationData)                    
+                    @foreach ($table as $reservationData)                    
                     <tr>
-                        <td>{{$reservationData->event_type}}</td>
-	                        <td>{{$reservationData->event_date}}<br>{{$reservationData->event_time}}</td>
+						   <td>{{$reservationData->table_name}} </td>
+	                        <td>{{$reservationData->date}}<br>{{$reservationData->time}}</td>
+	                        <td>{{$reservationData->noofperson}}</td>
+                       
+                  
                     </tr>
 
                     @endforeach
@@ -31,7 +36,7 @@
 
 		</div>
 			</div>
-			{{$reserve->links()}}
+			{{$table->links()}}
 				</div>
 					</div>
 					</div>

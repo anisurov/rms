@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 // use \Input as Input;
@@ -12,12 +11,6 @@ use DB;
 class UploadController extends Controller
 {
 
-    public function __construct(){
-    $this->middleware(['auth','execuser']);/*
-    if(Auth::user()->is_admin!=1){
-		return abort('404');
-	}*/
-  }
     public function index()
     {
         return view('addmenu');
@@ -26,12 +19,25 @@ class UploadController extends Controller
     public function upload(Request $request)
    {
         $this->validator($request->all());
-        global $image;
-        if (Input::hasFile('file')) {
+        global $image1,$image2,$image3;
+		 if (Input::hasFile('file2')) {
             echo 'Uploaded';
-            $file = Input::file('file');
-            $file->move('uploa', $file->getClientOriginalName());
-            $image = $file->getClientOriginalName();
+            $file2 = Input::file('file2');
+            $file2->move('uploa', $file2->getClientOriginalName());
+            $image2 = $file2->getClientOriginalName();
+        }
+        if (Input::hasFile('file1')) {
+            echo 'Uploaded';
+            $file1 = Input::file('file1');
+            $file1->move('uploa', $file1->getClientOriginalName());
+            $image1 = $file1->getClientOriginalName();
+        }
+		
+		 if (Input::hasFile('file3')) {
+            echo 'Uploaded';
+            $file3 = Input::file('file3');
+            $file3->move('uploa', $file3->getClientOriginalName());
+            $image3 = $file3->getClientOriginalName();
         }
         $item_name = $request->input('item_name');
         $item_category = $request->input('item_category');
@@ -40,14 +46,16 @@ class UploadController extends Controller
         $item_rating = $request->input('item_rating');
         $item_price = $request->input('item_price');
         $category = DB::select('select category_id from menu_category where category_name = "' . $item_category . '"');
-        
+        $CategoryID=11;
         foreach ($category as $key => $value) {
-            $categoryID = $value->category_id;
+            $CategoryID = $value->category_id;
         }
+   $image4 = "{$image2}{$image1}{$image3}";
+   echo $image4;
         $data = array(
-            'item_image' => $image,
+            'item_image' => $image4,
             'item_name' => $item_name,
-            'category_id' => $categoryID,
+            'category_id' => $CategoryID,
             'item_description' => $item_description,
             'item_stock' => $item_stock,
             'item_rating' => $item_rating,

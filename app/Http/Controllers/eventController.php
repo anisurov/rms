@@ -55,7 +55,12 @@ class eventController extends Controller
 		return view('showAllreservation',compact('reserve'));
 	
 	}
+		public function showAllreservation2 () {
+		$reserve=Event::orderBy('event_date', 'desc')
+               ->paginate(5);
+		return view('showAllreservation',compact('reserve'));
 	
+	}
 	public function approveReservation(Request $request){
 		if($request->status==0) {
 			if(Event::where('event_id',$request->eventID)->update(['status'=>1])){

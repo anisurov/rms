@@ -120,13 +120,23 @@
                                 </ul>
 								
                             </li>
-						
-							<li class="menu-item {{Request::is('shop-three-col.html') ? "current-page-item" : "" }}"><a href="{{ url('/eventReserve') }}">Event Booking</a>
+							<li class="menu-item {{Request::is('shop-three-col.html') ? "current-page-item" : "" }}"><a href="">Event Booking</a>
+							<ul class="sub-menu">
+								<li class="menu-item "><a href="{{ url('/eventReserve') }}">Event Reservetion</a></li>
+								<li class="menu-item"><a href="{{ url('/reservation2') }}">Reserved Event List</a>
+                                    </li>
+							</ul>
 							</li>
 							
+								<li class="menu-item"><a href="">Table Booking</a>
+							<ul class="sub-menu">
+								<li class="menu-item "><a href="{{ url('/tableReserve') }}">Table Reservetion</a></li>
+								<li class="menu-item"><a href="{{ url('/table_reservation2') }}">Reserved Table List</a>
+                                    </li>
+							</ul>
+							</li>
 							
-							<li class="menu-item"><a href="{{ url('/tableReserve') }}">Table Reservetion</a></li>
-							
+							<li class="menu-item"><a href=""></a></li>
 							<li class="menu-item {{Request::is('cart') ? "current-page-item" : "" }}"><a href="{{url('cart')}}">Online Food Order</a></li>
 
                             <li class="menu-item"><a href="about.html">About Us</a></li>
