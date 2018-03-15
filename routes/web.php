@@ -24,8 +24,10 @@ Route::get('/addcategorys', 'CategoryController@index');
 Route::get('/tableReserve', 'tableController@index')->middleware(['auth']);
 Route::get('/eventReserve', 'eventController@index')->middleware(['auth']);
 Route::get('/reservation', 'eventController@showAllreservation')->middleware(['auth','execuser']);
+Route::get('/reservation2', 'eventController@showAllreservation2');
 Route::post('/reservation', 'eventController@approveReservation')->middleware(['auth','execuser']);
 Route::get('/users', 'userController@index')->middleware(['auth','execuser']);
+Route::get('/table_reservation2', 'tableController@showAllreservation2');
 Route::get('/table_reservation', 'tableController@showAllreservation')->middleware(['auth','execuser']);
 Route::post('/table_reservation', 'tableController@approveReservation')->middleware(['auth','execuser']);
 Route::get('/onlineorder', 'OnlineOrderController@showAllOrder')->middleware(['auth','execuser']);
@@ -51,7 +53,8 @@ Route::get('item/{id}',['as'=>'item','uses'=>'MenuItemController@index']);
 /*Routes for cart [START]*/
 Route::resource('cart', 'CartController');
 Route::delete('emptyCart', 'CartController@emptyCart');
-Route::get('checkout','checkoutController@index');
+Route::get('checkout','checkoutController@index')->name('checkout');
+Route::get('pay','checkoutController@payform')->name('pay');
 /*Routes for cart [START]*/
 
 /**---------------------[Review]........................**/

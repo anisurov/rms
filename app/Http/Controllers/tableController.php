@@ -26,18 +26,25 @@ class TableController extends Controller
 			foreach ($user as $key => $value) {
 			$user_id = $value -> user_id;
 		}
-		$data= array('date'=>$dat , 'time'=>$tim, 'noofperson'=>$person_no, 
-		'message' => $message, 'user_id' => $user_id , 'status'=> '0' , 'table_name' => $table_name);
+		$data= array('date'=>$dat , 'time'=>$tim, 'noofperson'=>$person_no,
+		'message' => $message, 'user_id' => $user_id , 'status'=> 'P' , 'table_name' => $table_name);
 		DB::table('table_reservation') -> insert($data);
 		return redirect('/')->withSuccessMessage("thanks!for your booking");
    }
-   	
+
    public function showAllreservation () {
 		$table=Table::orderBy('date', 'desc')
                ->paginate(5);
-			  
+
 		return view('showTablreservation',compact('table'));
-	
+
+	}
+	   public function showAllreservation2 () {
+		$table=Table::orderBy('date', 'desc')
+               ->paginate(5);
+
+		return view('showTablreservation2',compact('table'));
+
 	}
   protected function validator(array $data)
 	{
@@ -51,14 +58,15 @@ class TableController extends Controller
 	        'time' => 'required|date_format:H:i',
 	    ])->validate();
 	}
-	
+
   public function approveReservation(Request $request){
-		if($request->status==0) {
-			if(Table::where('id',$request->eventID)->update(['status'=>1])){
+		if($request->status=='P') {
+			if(Table::where('id',$request->eventID)->update(['status'=>'A'])){
 				$title = "Table reservation approval";
 				$content['subject'] = "Table reservation approval";
 				$users = User::where('user_id',Table::where('id',$request->eventID)->pluck('user_id')->first())->get();
 				$content['customer']="customer";
+        $email = 'test@xyz.tld'
 				$content['pay']="yes";
 				$content['reservation']="Table";
 				//var_dump($users);
@@ -67,20 +75,20 @@ class TableController extends Controller
 							$email = $user->user_email;
 							$content['customer']=$user->user_name;
 							//var_dump($user);
-					}				
+					}
 				}
-			
+
 				emailController::notify($title,$content,$email);
 				return redirect('/')->withSuccessMessage('Table approved successfully');
 			}else
-			return redirect('/')->withErrorMessage('Table approval failed');		
+			return redirect('/')->withErrorMessage('Table approval failed');
 		}
-		if($request->status==1) {
-			if(Table::where('id',$request->eventID)->update(['status'=>0])){
+		if($request->status=='A') {
+			if(Table::where('id',$request->eventID)->update(['status'=>'P'])){
 				return redirect('/')->withSuccessMessage('Table disapproved successfully');
 			}
-			return redirect('/')->withErrorMessage('Table disapproval failed');		
-		}	
+			return redirect('/')->withErrorMessage('Table disapproval failed');
+		}
 	}
-	
+
 }

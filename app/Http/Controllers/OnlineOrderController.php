@@ -23,6 +23,7 @@ class OnlineOrderController extends Controller
                 $content['subject'] = "Order received successfully";
                 $users = User::where('user_id', Order::where('order_id', $request->orderID)->pluck('user_id')->first())->get();
                 $content['customer']="customer";
+                $email = 'test@xyz.tld'
                 $content['pay']="yes";
                 $content['reservation']="Order";
                 //var_dump($users);
