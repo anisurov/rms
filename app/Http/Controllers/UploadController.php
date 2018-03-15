@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 // use \Input as Input;
@@ -11,6 +12,12 @@ use DB;
 class UploadController extends Controller
 {
 
+    public function __construct(){
+    $this->middleware(['auth','execuser']);/*
+    if(Auth::user()->is_admin!=1){
+		return abort('404');
+	}*/
+  }
     public function index()
     {
         return view('addmenu');
@@ -19,25 +26,21 @@ class UploadController extends Controller
     public function upload(Request $request)
    {
         $this->validator($request->all());
-        global $image1,$image2,$image3;
-		 if (Input::hasFile('file2')) {
-            echo 'Uploaded';
+        global $image;
+        if (Input::hasFile('file')&&Input::hasFile('file2')&&Input::hasFile('file3')) {
+            $file = Input::file('file');
+            $name1="rms_img_".rand(1,20)."1".$file->getClientOriginalName();
+            $file->move('uploa',$name1);
+
             $file2 = Input::file('file2');
-            $file2->move('uploa', $file2->getClientOriginalName());
-            $image2 = $file2->getClientOriginalName();
-        }
-        if (Input::hasFile('file1')) {
-            echo 'Uploaded';
-            $file1 = Input::file('file1');
-            $file1->move('uploa', $file1->getClientOriginalName());
-            $image1 = $file1->getClientOriginalName();
-        }
-		
-		 if (Input::hasFile('file3')) {
-            echo 'Uploaded';
+            $name2="rms_img_".rand(1,20)."2".$file2->getClientOriginalName();
+            $file2->move('uploa', $name2);
+
             $file3 = Input::file('file3');
-            $file3->move('uploa', $file3->getClientOriginalName());
-            $image3 = $file3->getClientOriginalName();
+            $name3="rms_img_".rand(1,20)."3".$file3->getClientOriginalName();
+            $file3->move('uploa',$name3);
+
+            $image = $name1.",".$name2.",".$name3;
         }
         $item_name = $request->input('item_name');
         $item_category = $request->input('item_category');
@@ -46,16 +49,14 @@ class UploadController extends Controller
         $item_rating = $request->input('item_rating');
         $item_price = $request->input('item_price');
         $category = DB::select('select category_id from menu_category where category_name = "' . $item_category . '"');
-        $CategoryID=11;
+
         foreach ($category as $key => $value) {
-            $CategoryID = $value->category_id;
+            $categoryID = $value->category_id;
         }
-   $image4 = "{$image2}{$image1}{$image3}";
-   echo $image4;
         $data = array(
-            'item_image' => $image4,
+            'item_image' => $image,
             'item_name' => $item_name,
-            'category_id' => $CategoryID,
+            'category_id' => $categoryID,
             'item_description' => $item_description,
             'item_stock' => $item_stock,
             'item_rating' => $item_rating,
@@ -68,14 +69,14 @@ class UploadController extends Controller
             // alert('success', 'Your Product Entry was Successful!!');
             return view('addmenu');
         } else {
-            
+
             // alert('success', 'Your Product Entry was Successful!!');
-            
-            return redirect('/')->withSuccessMessage('Item added Successfully'); 
+
+            return redirect('/')->withSuccessMessage('Item added Successfully');
 		}
 
 	}
-	
+
 	protected function validator(array $data)
 	{
 	    return Validator::make($data, [
@@ -85,7 +86,9 @@ class UploadController extends Controller
 	        'item_rating' => 'required|numeric|between:1,10',
 	        'item_price' => 'required|numeric',
 	        'file'=>'nullable|mimes:jpeg,bmp,png',
+	        'file2'=>'nullable|mimes:jpeg,bmp,png',
+	        'file3'=>'nullable|mimes:jpeg,bmp,png',
 	    ])->validate();
 	}
-	
+
 }
