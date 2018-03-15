@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title','Add Menu Here')
-@section('content')	
+@section('content')
 <div class="container">
 	<div class="row">
 		<div class="info-container-main">
@@ -14,13 +14,13 @@
                     <tr>
                         <th>Event Type</th>
                         <th>Date/Time</th>
-                        <th>Contact</th>                      
+                        <th>Contact</th>
                         <th>Status</th>
                     </tr>
                 </thead>
 
-                <tbody>                
-                    @foreach ($reserve as $reservationData)                    
+                <tbody>
+                    @foreach ($reserve as $reservationData)
                     <tr>
                         <td>{{$reservationData->event_type}}</td>
 	                        <td>{{$reservationData->event_date}}<br>{{$reservationData->event_time}}</td>

@@ -39,6 +39,13 @@ class TableController extends Controller
 		return view('showTablreservation',compact('table'));
 	
 	}
+	   public function showAllreservation2 () {
+		$table=Table::orderBy('date', 'desc')
+               ->paginate(5);
+			  
+		return view('showTablreservation2',compact('table'));
+	
+	}
   protected function validator(array $data)
 	{
 	    return Validator::make($data, [
