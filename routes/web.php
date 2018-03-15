@@ -53,7 +53,8 @@ Route::get('item/{id}',['as'=>'item','uses'=>'MenuItemController@index']);
 /*Routes for cart [START]*/
 Route::resource('cart', 'CartController');
 Route::delete('emptyCart', 'CartController@emptyCart');
-Route::get('checkout','checkoutController@index');
+Route::get('checkout','checkoutController@index')->name('checkout');
+Route::get('pay','checkoutController@payform')->name('pay');
 /*Routes for cart [START]*/
 
 /**---------------------[Review]........................**/

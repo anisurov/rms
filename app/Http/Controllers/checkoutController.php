@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Order;
 use App\OrderDetail;
 use App\Item;
+use App\Transaction;
 use \Cart as Cart;
 use Validator;
 
@@ -15,7 +16,15 @@ class checkoutController extends Controller
     public function __construct(){
     $this->middleware('auth');
   }
-  public function index(){
+  public function index(Request $request){
+    if (isset($request->pay_id)) {
+      $pay_id = $request->pay_id;
+      if(Transaction::where('transaction_id',$pay_id)->count()>0){
+        return redirect('cart')->withErrorMessage('Sorry!!This transaction id already used');
+      }
+    }else {
+      return redirect('cart')->withErrorMessage('Please pay first');
+    }
   	if(sizeof(Cart::content())>0){
 		$userID=Auth::user()->user_id;
 		$successCount=1;
@@ -42,7 +51,7 @@ class checkoutController extends Controller
 
 	               }
 		}
-		if(isset($data)&&$this->create($data,$userID,$price,$datetime)){
+		if(isset($data)&&$this->create($data,$userID,$price,$datetime,$pay_id)){
 				if(sizeof(Cart::content())==sizeof($data)){
 				Cart::destroy();
 				return redirect('cart')->withSuccessMessage('Your Order Has been placed successfully');
@@ -82,12 +91,13 @@ class checkoutController extends Controller
 
   }
 
-   protected function create(array $data,$userID,$price,$datetime){
-
+   protected function create(array $data,$userID,$price,$datetime,$pay_id){
+     Transaction::create(['transaction_id'=>$pay_id]);
      $order = Order::create([
      'user_id'=>$userID,
      'datetime'=>$datetime,
      'total_price'=>$price,
+     'transaction_id'=>$pay_id,
      ]);
 
      if($order){
@@ -127,5 +137,8 @@ class checkoutController extends Controller
 				}
 
 	}*/
-
+  public function payform()
+  {
+    return view('payform');
+  }
 }

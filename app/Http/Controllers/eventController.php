@@ -26,8 +26,8 @@ class eventController extends Controller
 			foreach ($user as $key => $value) {
 			$user_id = $value -> user_id;
 		}
-		$data= array('event_date'=>$dat , 'event_time'=>$tim,'event_type'=> $event_type, 'event_no_of_people'=>$person_no, 
-		'event_custom_message' => $message, 'user_id' => $user_id , 'event_exterior_decoration'=> '1' );
+		$data= array('event_date'=>$dat , 'event_time'=>$tim,'event_type'=> $event_type, 'event_no_of_people'=>$person_no,
+		'event_custom_message' => $message, 'user_id' => $user_id , 'event_exterior_decoration'=> '1','status'=>'P' );
 		$num=Event::where('event_date',$dat)->where('event_time',$tim)->count();
 		var_dump($num);
 		if($num<=0) {
@@ -36,11 +36,11 @@ class eventController extends Controller
 		}
 		return redirect('/')->withErrorMessage("sorry! we are  already booked!! ");
 	}
-	
+
 	protected function validator(array $data)
 	{
 	    return Validator::make($data, [
-	        'event_type' => 'required|string|max:255',	       
+	        'event_type' => 'required|string|max:255',
 	        'email' => 'required|email',
 	        'message' => 'required|string|max:800',
 	        'person' => 'required|numeric',
@@ -48,26 +48,27 @@ class eventController extends Controller
 	       'time' =>  array('required','regex:/Day|Night$/'),
 	    ])->validate();
 	}
-	
+
 	public function showAllreservation () {
 		$reserve=Event::orderBy('event_date', 'desc')
                ->paginate(5);
 		return view('showAllreservation',compact('reserve'));
-	
+
 	}
 		public function showAllreservation2 () {
 		$reserve=Event::orderBy('event_date', 'desc')
                ->paginate(5);
-		return view('showAllreservation',compact('reserve'));
-	
+		return view('showAllreservation2',compact('reserve'));
+
 	}
 	public function approveReservation(Request $request){
-		if($request->status==0) {
-			if(Event::where('event_id',$request->eventID)->update(['status'=>1])){
+		if($request->status=='P') {
+			if(Event::where('event_id',$request->eventID)->update(['status'=>'A'])){
 				$title = "Event reservation approval";
 				$content['subject'] = "Event reservation approval";
 				$users = User::where('user_id',Event::where('event_id',$request->eventID)->pluck('user_id')->first())->get();
 				$content['customer']="customer";
+        $email = 'test@xyz.tld'
 				$content['pay']="yes";
 				$content['reservation']="Event";
 				//var_dump($users);
@@ -76,19 +77,19 @@ class eventController extends Controller
 							$email = $user->user_email;
 							$content['customer']=$user->user_name;
 							//var_dump($user);
-					}				
+					}
 				}
-			
+
 				emailController::notify($title,$content,$email);
 				return redirect('/')->withSuccessMessage('Event approved successfully');
 			}else
-			return redirect('/')->withErrorMessage('Event approval failed');		
+			return redirect('/')->withErrorMessage('Event approval failed');
 		}
-		if($request->status==1) {
-			if(Event::where('event_id',$request->eventID)->update(['status'=>0])){
+		if($request->status=='A') {
+			if(Event::where('event_id',$request->eventID)->update(['status'=>'P'])){
 				return redirect('/')->withSuccessMessage('Event disapproved successfully');
 			}
-			return redirect('/')->withErrorMessage('Event disapproval failed');		
-		}	
+			return redirect('/')->withErrorMessage('Event disapproval failed');
+		}
 	}
 }

@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+@section('title','Your Cart')
 @section('content')
 
  <div class="container">
@@ -7,7 +7,7 @@
      <div class="info-container-main">
             <div class="panel panel-default inside-body-panel-shadow">
 
-			
+
         @if (sizeof(Cart::content()) > 0)
 			<div class="panel-body">
 
@@ -84,7 +84,7 @@
 				</div><!--end panel body-->
 				<div class="panel-footer">
             <a href="{{ url('/menu') }}" class="btn btn-primary btn-lg">Continue Shopping</a> &nbsp;
-            <a href="{{ url('/checkout') }}" class="btn btn-success btn-lg">Proceed to Checkout</a>
+            <a href="{{ route('pay') }}" class="btn btn-success btn-lg">Proceed to Checkout</a>
 
             <div style="float:right">
                 <form action="{{ url('/emptyCart') }}" method="POST">
