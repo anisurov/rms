@@ -68,7 +68,7 @@ class eventController extends Controller
 				$content['subject'] = "Event reservation approval";
 				$users = User::where('user_id',Event::where('event_id',$request->eventID)->pluck('user_id')->first())->get();
 				$content['customer']="customer";
-        $email = 'test@xyz.tld'
+        $email = 'test@xyz.tld';
 				$content['pay']="yes";
 				$content['reservation']="Event";
 				//var_dump($users);

@@ -66,7 +66,7 @@ class TableController extends Controller
 				$content['subject'] = "Table reservation approval";
 				$users = User::where('user_id',Table::where('id',$request->eventID)->pluck('user_id')->first())->get();
 				$content['customer']="customer";
-        $email = 'test@xyz.tld'
+        $email = 'test@xyz.tld';
 				$content['pay']="yes";
 				$content['reservation']="Table";
 				//var_dump($users);
