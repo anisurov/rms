@@ -34,6 +34,22 @@ Route::get('/onlineorder', 'OnlineOrderController@showAllOrder')->middleware(['a
 Route::post('/onlineorder', 'OnlineOrderController@approve')->middleware(['auth','execuser']);
 Route::get('/upadte/rating', 'RatingController@update')->name('rating')->middleware(['auth','execuser']);
 
+//profile
+Route::get('/userprofile', 'ProfileController@index');
+Route::get('/updateprofile', 'ProfileController@update');
+Route::get('/updateprofile2', 'ProfileController@insert');
+
+//branch
+Route::get('/addbranch', 'BranchController@index');
+Route::get('/showallbranch', 'BranchController@showallbranch');
+Route::post('/addbranch2', 'BranchController@add');
+Route::get('branchdelete','BranchController@delete');
+Route::get('branch/{id}',['as'=>'branch','uses'=>'BranchController@branchselect']);
+
+
+//user
+Route::get('/userdelete', 'UserController@delete');
+
 /*Routes, Handles Error exceptions [START]*/
 Route::get('404',['as'=>'404','uses'=>'ErrorHandleController@errorCode404']);
 Route::post('upload', 'UploadController@upload');
@@ -43,12 +59,31 @@ Route::post('/eventReserve2', 'eventController@reserve');
 Route::get('405',['as'=>'405','uses'=>'ErrorHandleController@errorCode405']);
 /*Routes, Handles Error exceptions [END]*/
 
+//Deliver Boy
+Route::get('/delivery', 'DeliveryBoyController@index');
+Route::post('/delivery2', 'DeliveryBoyController@insert');
+Route::post('/delivery3', 'DeliveryBoyController@approve');
+Route::get('/delivery4', 'DeliveryBoyController@ShowAllDeliveryBoy');
+
+//Employee
+Route::get('/restaurentpayment', 'PaymentController@restaurentpayment');
+Route::post('/preorderpayment', 'PaymentController@preorderpayment');
+
 /*Routes, For Menu,Item [START]*/
 Route::get('menu/{id}',['as'=>'menu','uses'=>'MenuItemController@index']);
 Route::get('menu',['as'=>'allMenu','uses'=>'MenuItemController@allMenu']);
+Route::get('menu2',['as'=>'allMenu2','uses'=>'MenuItemController@allMenu2']);
 Route::get('item/{id}',['as'=>'item','uses'=>'MenuItemController@index']);
+Route::get('itemdelete','MenuItemController@delete');
+Route::get('itemupdate','MenuItemController@update');
+Route::get('itemupdate2','MenuItemController@update2');
+Route::get('searchmenu','MenuItemController@search');
 /*Routes, For Menu,Item [END]*/
-
+//category
+Route::get('allcategorys','CategoryController@showallcategory');
+Route::get('categorydelete','CategoryController@delete');
+Route::get('categoryupdate','CategoryController@update');
+Route::get('categoryupdate2','CategoryController@update2');
 
 /*Routes for cart [START]*/
 Route::resource('cart', 'CartController');
@@ -56,6 +91,11 @@ Route::delete('emptyCart', 'CartController@emptyCart');
 Route::get('checkout','checkoutController@index')->name('checkout');
 Route::get('pay','checkoutController@payform')->name('pay');
 /*Routes for cart [START]*/
+
+//payment
+
+Route::get('eventpay','PaymentController@event');
+Route::get('tablepay','PaymentController@table');
 
 /**---------------------[Review]........................**/
 

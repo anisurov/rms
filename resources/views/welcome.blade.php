@@ -5,6 +5,10 @@
                 <div class="container">
                     <p class="theme-ribbon ribbon"> Welcome </p>
                 </div>
+                <?php
+                $time = date('h');
+                echo $time;
+                ?>
             </div>
             <div class="banner2">
                 <div class="container">
@@ -115,13 +119,12 @@
             <div class="main-container">
                 <div class="container">
                     <section id="primary" class="content-full-width">
-					<div class="big-ribbon">
+					<div class="big-ribbon" style="margin-left:100px">
                             <div class="ribbon-content aligncenter">
-                                <h3><b>Bella Motel</b> - A Restaurant Theme</h3>
-                                <p>Roin a bibendum nibh. Nunc fermentum sit amet mi nec consequat. Praesent porttitor nulla sit amet dui lobortis. Nunc fermentum sit amet mi nec consequat. </p>
+                                <h3><b>Ekhuni Chai </b> - A Restaurant Website</h3>
                             </div>
                         </div>
-                        <h2 class="block-title aligncenter">Our Services 3 Column</h2>
+                        <h2 class="block-title aligncenter" style="margin-left:40px">Our Services 3 Column</h2>
                         <div class="dt-sc-one-third column first">
                             <article class="services">
                                 <div class="border">

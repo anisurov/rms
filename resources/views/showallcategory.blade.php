@@ -6,37 +6,37 @@
 		<div class="info-container-main">
 			<div class="panel panel-default inside-body-panel-shadow">
 			<div class="panel-heading  text-lest">
-					<strong><h2>User Info<h2></strong>
+					<strong><h2>Category List<h2></strong>
 				</div>
 					<div class="panel-body">
 					<table class="table">
                 <thead>
                     <tr>
-                        <th>Name</th>
-                        <th> Email</th>
-                        <th>Mobile Number</th>
-                        <th>Birth date</th>                      
-                        <th>Address</th>
+                        <th>Category Name</th>
                     </tr>
                 </thead>
 
                 <tbody>                
-                    @foreach ($user as $userData)                    
+                    @foreach ($category as $userData)                    
                     <tr>
-                        <td>{{$userData->user_name}}}}</td>
-	                        <td>{{$userData->user_email}}</td>
-                        <td>{{$userData->user_mobile}}</td>
-                        <td>{{$userData->user_dob}}</td>
-                        <td>{{$userData->user_address}}</td>
+                        <td>{{$userData->category_name}}</td>
                         <td>
-                        <form action="{{  url('/userdelete') }}" method="GET">
+                        <form action="{{  url('/categorydelete') }}" method="GET">
 {{ csrf_field() }}
-<input type="hidden" name="id" value="{{$userData->user_id}}" />
+<input type="hidden" name="id" value="{{$userData->category_id}}" />
 <button type="submit" class="btn btn-default btn-sm">
           <span class="glyphicon glyphicon-remove"></span> DELETE 
         </button>
 </form>
+<form action="{{  url('/categoryupdate') }}" method="GET">
+{{ csrf_field() }}
+<input type="hidden" name="id" value="{{$userData->category_id}}" />
+<button type="submit" class="btn btn-default btn-sm">
+          <span class="glyphicon glyphicon-remove"></span> UPDATE 
+        </button>
+</form>
                         </td>
+                    
                     </tr>
 
                     @endforeach
@@ -46,7 +46,6 @@
 
 		</div>
 			</div>
-			{{$user->links()}}
 				</div>
 					</div>
 					</div>

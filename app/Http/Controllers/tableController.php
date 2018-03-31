@@ -5,11 +5,21 @@ use App\Table;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
 use DB;
 class TableController extends Controller
 {
    public function index()
    {
+	$time = date('h')+6;
+		
+		
+	if($time<8&&$time>23)
+	{
+	
+		return redirect('/')->withErrorMessage('Website Closed');
+	}
+	else
 	   return view('tablereserve');
    }
    public function reserve(Request $request)
@@ -26,10 +36,20 @@ class TableController extends Controller
 			foreach ($user as $key => $value) {
 			$user_id = $value -> user_id;
 		}
+		$user = Auth::user();
+		$email=$user->user_email;
+		$branch =DB::select('select branch_name from branch_name where user_email = "' . $email . '"');
+		foreach ($branch as $key => $value) {
+			$branch_name = $value -> branch_name;
+		}
 		$data= array('date'=>$dat , 'time'=>$tim, 'noofperson'=>$person_no,
-		'message' => $message, 'user_id' => $user_id , 'status'=> 'P' , 'table_name' => $table_name);
+		'message' => $message, 'user_id' => $user_id , 'branch_name'=>$branch_name ,'status'=> 'P' , 'table_name' => $table_name);
 		DB::table('table_reservation') -> insert($data);
-		return redirect('/')->withSuccessMessage("thanks!for your booking");
+		$event_id=DB::table('table_reservation')->select('id')->where('date',$dat)->where('time',$tim)->get();
+		foreach ($event_id as $key => $value) {
+			$id = $value -> id;
+		}
+		return view('tablepayment',compact('id'))->withSuccessMessage("thanks!for your booking");
    }
 
    public function showAllreservation () {
@@ -40,7 +60,13 @@ class TableController extends Controller
 
 	}
 	   public function showAllreservation2 () {
-		$table=Table::orderBy('date', 'desc')
+		$user = Auth::user();
+		$email=$user->user_email;
+		$branch =DB::select('select branch_name from branch_name where user_email = "' . $email . '"');
+		foreach ($branch as $key => $value) {
+			$branch_name = $value -> branch_name;
+		}
+	$table=Table::where('branch_name',$branch_name)->where('status','A')->orderBy('date', 'desc')
                ->paginate(5);
 
 		return view('showTablreservation2',compact('table'));
@@ -62,6 +88,7 @@ class TableController extends Controller
   public function approveReservation(Request $request){
 		if($request->status=='P') {
 			if(Table::where('id',$request->eventID)->update(['status'=>'A'])){
+				DB::table('transaction')->where('event_id',$request->eventID)->update(['transaction_status'=>'A']);
 				$title = "Table reservation approval";
 				$content['subject'] = "Table reservation approval";
 				$users = User::where('user_id',Table::where('id',$request->eventID)->pluck('user_id')->first())->get();

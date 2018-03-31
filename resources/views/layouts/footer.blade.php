@@ -6,13 +6,13 @@
                         <aside class="widget hotel-timing">
                             <h3 class="widgettitle">Hotel Hours</h3>
                             <ul>
-                                <li><span class="day">Monday: </span> 10 am - 10 pm </li>
-                                <li><span class="day">Tuesday: </span> 10 am - 10 pm </li>
-                                <li><span class="day">Wednesday: </span> 10 am - 10 pm </li>
-                                <li><span class="day">Thursday: </span> 10 am - 10 pm </li>
-                                <li><span class="day">Friday: </span> 10 am - 10 pm </li>
-                                <li><span class="day">Saturday: </span> 10 am - 10 pm </li>
-                                <li><span class="day">Sunday: </span> Holiday </li>
+                                <li><span class="day">Monday: </span> 8 am - 11 pm </li>
+                                <li><span class="day">Tuesday: </span> 8 am - 11 pm </li>
+                                <li><span class="day">Wednesday: </span> 8 am - 11 pm </li>
+                                <li><span class="day">Thursday: </span> 8 am - 11 pm </li>
+                                <li><span class="day">Friday: </span> Holiday</li>
+                                <li><span class="day">Saturday: </span> 8 am - 11 pm </li>
+                                <li><span class="day">Sunday: </span>8 am - 11 pm   </li>
                             </ul>
                             <span class="closed">CLOSED Mondays &amp; Tuesday </span>
                         </aside>
@@ -42,33 +42,33 @@
                         </div>
                         <div class="dt-sc-one-half column">
                             <aside class="widget widget_text">
-                                <p><span class="fa fa-map-marker"></span><strong>Address:</strong> 143 - 158, Bernie Road, Kansas, US</p>
+                                <p><span class="fa fa-map-marker"></span><strong>Address:</strong>Chalk Bazar, Chittagong , Bangladesh</p>
                                 <p><span class="fa fa-phone"></span><strong>Phone:</strong> 020 7326 4987</p>
-                                <p><span class="fa fa-envelope"></span><strong>Mail:</strong> <a href="#">enquiries@gmail.com</a></p>
+                                <p><span class="fa fa-envelope"></span><strong>Mail:</strong> <a href="#">ekhonichai@gmail.com</a></p>
                             </aside>
                             <aside class="widget social-icons">
                                 <h3 class="widgettitle">We are Social:</h3>
                                 <ul>
                                     <li>
-                                        <a href="#">
+                                        <a href="https:\\www.twitter.com">
                                             <img src="{{asset('images/sociable/hover/twitter.png')}}" alt="twitter.png" title="" />
                                             <img src="{{asset('images/sociable/twitter.png')}}" alt="twitter.png" title="" />
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="#">
+                                        <a href="https:\\www.google.com">
                                             <img src="{{asset('images/sociable/hover/google.png')}}" alt="google.png" title="" />
                                             <img src="{{asset('images/sociable/google.png')}}" alt="google.png" title="" />
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="#">
+                                        <a href="https:\\www.facebook.com">
                                             <img src="{{asset('images/sociable/hover/facebook.png')}}" alt="facebook.png" title="" />
                                             <img src="{{asset('images/sociable/facebook.png')}}" alt="facebook.png" title="" />
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="#">
+                                        <a href="https:\\www.pinterest.com">
                                             <img src="{{asset('images/sociable/hover/pinterest.png')}}" alt="pinterest.png" title="" />
                                             <img src="{{asset('images/sociable/pinterest.png')}}" alt="pinterest.png" title="" />
                                         </a>

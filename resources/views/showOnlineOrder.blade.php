@@ -16,11 +16,13 @@
                         <th>Items</th>
                         <th>Date/Time</th>
                         <th>Status</th>
+						<th>Delivery Boy</th>
                     </tr>
                 </thead>
 
                 <tbody>
                     @foreach ($order as $reservationData)
+					
                     <tr>
                         <td>
                             @foreach(App\User::where('user_id',$reservationData->user_id)->get() as $user)
@@ -43,8 +45,28 @@
                                 <input type="submit" class="btn {{$reservationData->status=='p' ? 'btn-danger':'btn-success'}} btn-sm" value="{{$reservationData->status=='p' ? 'Approve':'Approved'}}">
                             </form>
                         </td>
+						
+						<td>
+				<form action="{{ url('/delivery3') }}" method="POST" >
+				{!! csrf_field() !!}
+					<div class="dropdown">
+							<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
+							Delivery Boy
+							<span class="caret"></span></button>
+							
+						<ul class="dropdown-menu" style="min-width: 100px">
+						@foreach($boy as $boys)
+						<li>
+                        <input type="hidden" name="delivery_boy_name" value="{{$boys->delivery_boy_name}}">
+						<input style="display: block !important" name="delivery_boy_name2" type="submit" style="width: 100px !important" class="btn btn-success" value="{{$boys->delivery_boy_name}}"button></li>
+						@endforeach
+						</ul>
+					
+						</div>
+						</form>
+						</td>
             				</tr>
-
+							
                     @endforeach
 
                 </tbody>

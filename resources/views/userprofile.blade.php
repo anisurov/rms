@@ -6,7 +6,7 @@
 		<div class="info-container-main">
 			<div class="panel panel-default inside-body-panel-shadow">
 			<div class="panel-heading  text-lest">
-					<strong><h2>User Info<h2></strong>
+					<strong><h2>User Profile<h2></strong>
 				</div>
 					<div class="panel-body">
 					<table class="table">
@@ -20,33 +20,30 @@
                     </tr>
                 </thead>
 
-                <tbody>                
-                    @foreach ($user as $userData)                    
+                <tbody>                                   
                     <tr>
-                        <td>{{$userData->user_name}}}}</td>
-	                        <td>{{$userData->user_email}}</td>
-                        <td>{{$userData->user_mobile}}</td>
-                        <td>{{$userData->user_dob}}</td>
-                        <td>{{$userData->user_address}}</td>
+                        <td>{{$user->user_name}}</td>
+	                        <td>{{$user->user_email}}</td>
+                        <td>{{$user->user_mobile}}</td>
+                        <td>{{$user->user_dob}}</td>
+                        <td>{{$user->user_address}}</td>
                         <td>
-                        <form action="{{  url('/userdelete') }}" method="GET">
+                        <form action="{{  url('/updateprofile') }}" method="GET">
 {{ csrf_field() }}
-<input type="hidden" name="id" value="{{$userData->user_id}}" />
+<input type="hidden" name="_method" value="UPDATE" />
 <button type="submit" class="btn btn-default btn-sm">
-          <span class="glyphicon glyphicon-remove"></span> DELETE 
+          <span class="glyphicon glyphicon-remove"></span> Update 
         </button>
 </form>
                         </td>
                     </tr>
-
-                    @endforeach
+ 
 
                 </tbody>
             </table>
 
 		</div>
 			</div>
-			{{$user->links()}}
 				</div>
 					</div>
 					</div>

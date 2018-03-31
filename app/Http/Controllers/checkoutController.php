@@ -42,7 +42,9 @@ class checkoutController extends Controller
 
 			$data[$successCount]['item_id'] = $item->name;
 			$data[$successCount]['menu_item_quantity'] = $item->qty;
-      $price = $price + $item->price*$item->qty;
+			$price = $price + $item->price*$item->qty;
+			$tax =((15*$price)/100);
+			$price= $price+$tax;
 			$successCount = $successCount + 1;
 			//var_dump($data);
 		   }else{

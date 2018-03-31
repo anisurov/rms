@@ -73,7 +73,7 @@ class RegisterController extends Controller
 	    'user_dob'=>$data['dob'],
 	    'user_address'=>$data['address'],
             'user_password' => bcrypt($data['password']),
-	    'is_admin' => 0,
+	    'is_admin' => 2,
 			
 			
         ]);

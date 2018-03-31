@@ -80,34 +80,47 @@
 							<li class="menu-item"><a href="#">Category</a>
 							<ul class="sub-menu">
 								<li class="menu-item {{Request::is('addcategorys') ? "current-page-item" : "" }}"><a href="{{ url('/addcategorys') }}">Add New Category</a></li>
-								<li class="menu-item"><a href="#">Update Category</a>
+								<li class="menu-item"><a href="{{url('allcategorys')}}">Update Category</a>
                                     </li>
-								<li class="menu-item"><a href="#">Category info</a>
-									</li>
 							</ul>
 							</li>
 
 							<li class="menu-item"><a href="#">Menu Item</a>
 							<ul class="sub-menu">
 								<li class="menu-item"><a href="{{ url('/uploads') }}">Add New Menu Item</a></li>
-								<li class="menu-item"><a href="shop-two-col.html">Update menu</a>
+								<li class="menu-item"><a href="{{route('allMenu2')}}">Update menu</a>
                                     </li>
-								<li class="menu-item"><a href="shop-three-col.html">Menu info</a>
-									</li>
 							</ul>
 							</li>
 
 							<li class="menu-item"><a href="shop-three-col.html">User Info</a>
 							<ul class="sub-menu">
-								<li class="menu-item"><a href="shop-two-col.html">Update User</a>
-                                    </li>
 								<li class="menu-item"><a href="{{ url('/users') }}">View User</a>
 									</li>
+                                    
 							</ul>
 							</li>
 
+                            <li class="menu-item"><a href="shop-three-col.html">Branch</a>
+							<ul class="sub-menu">
+								<li class="menu-item"><a href="{{ url('/addbranch') }}">Add Branch</a>
+								</li>
+
+                                <li class="menu-item"><a href="{{ url('/showallbranch') }}">Update Branch</a>
+								</li> 
+							</ul>
+							</li>
+
+                            <li class="menu-item"><a href="{{ url('#') }}">Delivery Boy</a>
+								<ul>
+                                <li class="menu-item"><a href="{{ url('/delivery') }}">Add Delivery Boy</a>
+                                <li class="menu-item"><a href="{{ url('/delivery4') }}">Delivery Boy List</a>
+                                </ul>
+                                
+                                	</li>
+
                         </ul>
-                        @else
+                        @elseif(Auth::user()->is_admin==0)
                         <ul>
                             <li class="menu-item  {{Request::is('/') ? "current-page-item" : "" }}"><a href="/">Home</a>
 
@@ -140,6 +153,33 @@
 
 
 							<li class="menu-item {{Request::is('cart') ? "current-page-item" : "" }}"><a href="{{url('cart')}}">Online Food Order</a></li>
+
+                            <li class="menu-item"><a href="about.html">About Us</a></li>
+
+							<li class="menu-item"><a href="shop-three-col.html">Contact Us</a></li>
+                            <li class="menu-item"><a href="{{ url('/userprofile') }}">User Profile</a></li>
+
+                            <li class="menu-item"><a type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModal" style="float:none">Select Branch</a>
+                                <ul class=sub-menu>
+                       	            @foreach(App\Branch::all() as $branch)
+								    <li class="menu-item"><a href="{{route('branch',$branch->branch_id)}}">	{{$branch->branch_name}}</a></li>
+									@endforeach
+                                </ul>
+                            <li>
+
+                        </ul>
+
+                        @else
+                        <ul>
+                            <li class="menu-item  {{Request::is('/') ? "current-page-item" : "" }}"><a href="/">Home</a>
+                            </li>
+
+                            <li class="menu-item"><a href="about.html">Payment</a>
+                            <ul>
+                            <li class="menu-item"><a href="{{ url('/restaurentpayment') }}">Restaurent Payment</a></li>
+                            <li class="menu-item"><a href="about.html">Preorder Payment</a></li>
+                            </ul>
+                            </li>
 
                             <li class="menu-item"><a href="about.html">About Us</a></li>
 
