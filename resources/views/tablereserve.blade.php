@@ -98,7 +98,7 @@
 						</div>
 						<div class="form-group" style="">
 							<div class="col-md-8 col-md-offset-4">
-								<button type="submit" class="dt-sc-button small theme-btn">
+								<button type="submit" name="addm" value="true" class="dt-sc-button small theme-btn">
 									Preorder
 								</button>
 							</div>

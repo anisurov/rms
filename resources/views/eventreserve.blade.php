@@ -9,7 +9,7 @@
 					<strong><h2>Event Reservation<h2></strong>
 				</div>
 					<div class="panel-body">
-					<form 	 method="post" enctype="multipart/form-data">
+					<form 	action="{{ URL::to('eventReserve2') }}" method="post" enctype="multipart/form-data">
 					<input type="hidden" value="{{ csrf_token() }}" name="_token">
 					
 						  <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">

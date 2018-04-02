@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Order;
+use DB;
 use App\OrderDetail;
 use App\Item;
 use App\Transaction;
@@ -94,16 +95,45 @@ class checkoutController extends Controller
   }
 
    protected function create(array $data,$userID,$price,$datetime,$pay_id){
-     Transaction::create(['transaction_id'=>$pay_id]);
-     $order = Order::create([
-     'user_id'=>$userID,
-     'datetime'=>$datetime,
-     'total_price'=>$price,
-     'transaction_id'=>$pay_id,
-     ]);
+		 Transaction::create(['transaction_id'=>$pay_id]);
+		 $user = Auth::user();
+		 $email=$user->user_email;
+		 $order=NULL;
+		 $flag=DB::table('food_order')->select('order_type')->where('user_id',$user->user_id)->where('total_price',0)->get();
+		 if(count($flag)>0)
+		 {
+			$order2=DB::table('food_order')->select('order_id')->
+			where('user_id',$user->user_id)->where('total_price',0)->get();
 
-     if($order){
-       $orderID=$order->order_id;
+			foreach ($order2 as $key => $value) {
+				$order_id2 = $value ->order_id;
+		}
+
+			$value=array('total_price'=>$price,'transaction_id'=>$pay_id) ;
+				DB::table('food_order')->where('user_id',$user->user_id)->where('total_price',0)->
+				update($value);
+				
+		 }
+		 else
+		 {
+			$order = Order::create([
+				'user_id'=>$userID,
+				'datetime'=>$datetime,
+				'total_price'=>$price,
+				'transaction_id'=>$pay_id,
+				]);
+					$order_id2 = $order->order_id;
+		 }
+		 if($order)
+		 {
+		 $values=array('user_email'=>$email,'transaction_type'=>'food_order','event_id'=>$order->order_id,'vendor'=>
+		 'BKash',	'vendor_trx_id'=>$pay_id,'transaction_amount'=>$price,'transaction_status'=>'A');
+		 DB::table('transaction')->insert($values);
+		 }
+		 
+	   
+     if($order_id2){
+       $orderID=$order_id2;
     	foreach($data as $orderDetail){
     		$successChecker=0;
     		$checker = OrderDetail::create([

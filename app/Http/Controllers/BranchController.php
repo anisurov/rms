@@ -21,10 +21,19 @@ class BranchController extends Controller
         foreach ($branch as $key => $value) {
             $branch_name = $value -> branch_name;
         }
+        $value=DB::table('branch_name')->select('branch_name')->where('user_email',$email)->get();
+       
+        echo $value;
+
         $data= array('user_email'=>$email , 'branch_name'=>$branch_name);
+        if(count($value)>0){
         DB::table('branch_name') ->where('user_email',$email)->update($data);
- 
-		return redirect('/')->withSuccessMessage('Branch Selected');
+        }
+        else
+        {
+            DB::table('branch_name')->insert($data);
+        }
+		return redirect('/')->withSuccessMessage(count($value));
     }
 
      public function add(Request $request)

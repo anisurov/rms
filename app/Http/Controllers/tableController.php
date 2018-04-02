@@ -49,7 +49,16 @@ class TableController extends Controller
 		foreach ($event_id as $key => $value) {
 			$id = $value -> id;
 		}
-		return view('tablepayment',compact('id'))->withSuccessMessage("thanks!for your booking");
+		if(($request->input('addm')==true))
+		{
+			$user = Auth::user();
+		$id=$user->user_id;
+			$id2=2;
+			$data=array('user_id'=>$id,'total_price'=>0,'order_type'=>'preorder');
+			DB::table('food_order')->insert($data);
+		return view('tablepayment',compact('id','id2'))->withSuccessMessage("thanks!for your booking");
+
+		}
    }
 
    public function showAllreservation () {

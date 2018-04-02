@@ -18,6 +18,7 @@
 					  					  </div>
                               <input id="pay_id" type="text" class="form-control"  name="pay_id" value="" placeholder="bKash Transaction ID" required autofocus>
                               <input type="hidden" name="event_id" value="{{$id}}">
+                              <input type="hidden" name="preorder" value="{{$id2}}">
                             </div>
                                 @if ($errors->has('pay_id'))
                                     <span class="help-block">
