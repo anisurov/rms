@@ -15,15 +15,14 @@
             <div class="panel panel-default inside-body-panel-shadow">
            
               <div class="panel-heading" style="padding:25px;">
-              <div class="float-left" style="width:100px">{{$item->item_name}}</div>
-              <div class="float-left" style="padding-left:40%">Price: {{$item->item_price}}</div>
-              
-              <div class="float-right">&nbsp;Rating:{{$item->item_rating}}</div>
+              <div  style="width:100px;display:inline-block;">{{$item->item_name}}</div>
+              <div  style="padding-left:36%;display:inline-block">Price: {{$item->item_price}}</div>
+              <div style="padding-left:36%;display:inline-block">&nbsp;Rating:{{$item->item_rating}}</div>
               </div>
             
                 <div class="panel-body">
                   @php($image=explode(",",$item->item_image))
-                       <div class="pull-left"> <img src="{{asset('uploa/')}}/{{$image[0]}}" class="img-responsive img-item" alt="{{ $item->item_name }}"> </div>
+                       <div class="pull-left"> <img src="{{asset('uploa/')}}/{{$image[0]}}" class="img-responsive img-item" style="    max-width: 300px;" alt="{{ $item->item_name }}"> </div>
                        <div class="pull-right item-description"> {{$item->item_description}}</div>
                 </div>
                 <div class="panel-footer">

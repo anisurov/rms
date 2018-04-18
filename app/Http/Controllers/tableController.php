@@ -62,7 +62,7 @@ class TableController extends Controller
    }
 
    public function showAllreservation () {
-		$table=Table::orderBy('date', 'desc')
+		$table=Table::orderBy('id', 'desc')
                ->paginate(5);
 
 		return view('showTablreservation',compact('table'));
@@ -75,7 +75,7 @@ class TableController extends Controller
 		foreach ($branch as $key => $value) {
 			$branch_name = $value -> branch_name;
 		}
-	$table=Table::where('branch_name',$branch_name)->where('status','A')->orderBy('date', 'desc')
+	$table=Table::where('branch_name',$branch_name)->where('status','A')->orderBy('id', 'desc')
                ->paginate(5);
 
 		return view('showTablreservation2',compact('table'));

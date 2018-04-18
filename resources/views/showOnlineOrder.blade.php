@@ -42,7 +42,7 @@
                                 {!! csrf_field() !!}
                                 <input type="hidden" name="status" value="{{$reservationData->status}}">
                                 <input type="hidden" name="orderID" value="{{$reservationData->order_id}}">
-                                <input type="submit" class="btn {{$reservationData->status=='p' ? 'btn-danger':'btn-success'}} btn-sm" value="{{$reservationData->status=='p' ? 'Approve':'Approved'}}">
+                                <input type="submit" class="btn {{$reservationData->status=='P' ? 'btn-danger':'btn-success'}} btn-sm" value="{{$reservationData->status=='P' ? 'Approve':'Approved'}}">
                             </form>
                         </td>
 						

@@ -71,7 +71,7 @@ class eventController extends Controller
 	}
 
 	public function showAllreservation () {
-		$reserve=Event::orderBy('event_date', 'desc')
+		$reserve=Event::orderBy('event_id', 'desc')
                ->paginate(5);
 		return view('showAllreservation',compact('reserve'));
 
@@ -85,7 +85,7 @@ class eventController extends Controller
 			foreach ($branch as $key => $value) {
 				$this->branch_name = $value -> branch_name;
 			}
-		$reserve=Event::where('branch_name',$this->branch_name)->where('status','A')->orderBy('event_date', 'desc')
+		$reserve=Event::where('branch_name',$this->branch_name)->where('status','A')->orderBy('event_id', 'desc')
                ->paginate(5);
 		return view('showAllreservation2',compact('reserve'));
 

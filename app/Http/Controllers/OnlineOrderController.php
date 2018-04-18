@@ -18,7 +18,7 @@ class OnlineOrderController extends Controller
 
     public function approve(Request $request)
     {
-        if ($request->status=='A') {
+        if ($request->status=='P') {
             if (Order::where('order_id', $request->orderID)->update(['status'=>'A'])) {
                 $title = "Order received successfully";
                 $content['subject'] = "Order received successfully";
@@ -43,7 +43,7 @@ class OnlineOrderController extends Controller
             }
         }
         if ($request->status=='A') {
-            if (Order::where('order_id', $request->orderID)->update(['status'=>'A'])) {
+            if (Order::where('order_id', $request->orderID)->update(['status'=>'P'])) {
                 return redirect('/')->withSuccessMessage('Order disapproved successfully');
             }
             return redirect('/')->withErrorMessage('Order disapproval failed');

@@ -27,7 +27,13 @@
                     @foreach (Cart::content() as $item)
                     {{Cart::setTax($item->rowId, 0)}}
                     <tr>
-                        <td class="table-image"><a href="#"><img src="{{asset('uploa')}}/{{ App\Item::where('item_id',$item->name)->pluck('item_image')->first() }}" alt="product" class="img-responsive img-item"></a></td>
+                    @php($image=App\Item::where('item_id',$item->name)->pluck('item_image'))
+                     <?php
+                     str_replace("[\"","",$image[0]);
+                     ?>
+                    @php($image1=explode(",",$image[0]))
+
+                        <td class="table-image"><a href="#"><img src="{{asset('uploa')}}/{{ $image1[0] }}" alt="product" class="img-responsive img-item"></a></td>
                         <td><a href="{{url('/menu')}}/{{$item->name}}">{{ App\Item::where('item_id',$item->name)->pluck('item_name')->first() }}</a></td>
                         <td>
                             <select class="quantity" data-id="{{ $item->rowId }}">

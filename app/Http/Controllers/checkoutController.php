@@ -127,7 +127,7 @@ class checkoutController extends Controller
 		 if($order)
 		 {
 		 $values=array('user_email'=>$email,'transaction_type'=>'food_order','event_id'=>$order->order_id,'vendor'=>
-		 'BKash',	'vendor_trx_id'=>$pay_id,'transaction_amount'=>$price,'transaction_status'=>'A');
+		 'BKash',	'vendor_trx_id'=>$pay_id,'transaction_amount'=>$price,'transaction_status'=>'P');
 		 DB::table('transaction')->insert($values);
 		 }
 		 
