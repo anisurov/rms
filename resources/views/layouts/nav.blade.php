@@ -177,7 +177,7 @@
                             <li class="menu-item"><a href="about.html">Payment</a>
                             <ul>
                             <li class="menu-item"><a href="{{ url('/restaurentpayment') }}">Restaurent Payment</a></li>
-                            <li class="menu-item"><a href="about.html">Preorder Payment</a></li>
+                            <li class="menu-item"><a href="{{ url('/preorderpayment1') }}">Preorder Payment</a></li>
                             </ul>
                             </li>
 

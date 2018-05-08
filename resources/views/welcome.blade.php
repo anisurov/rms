@@ -3,19 +3,6 @@
 @section('content')
 <div class="home2-ribbon">
                 <div class="container">
-<?php
-$pass=1234567;
-$hashed =password_hash($pass, PASSWORD_DEFAULT);
-$hashed2 = password_hash("asmuslerdorf", PASSWORD_DEFAULT);
-$hash = '$2y$10$xFSrc3MXIXkb6yMr0qcU4O9.Ru9.OQ9fdJ44zSzU/pPVC5QM6r0BW';
-$p=1235;
-if (password_verify($p, $hashed)) {
-    echo 'Password is valid!';
-} else {
-    echo 'Invalid password.';
-}
-
-?>
                     <p class="theme-ribbon ribbon"> Welcome </p>
                 </div>
                 <?php

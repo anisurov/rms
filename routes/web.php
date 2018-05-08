@@ -67,7 +67,9 @@ Route::get('/delivery4', 'DeliveryBoyController@ShowAllDeliveryBoy');
 
 //Employee
 Route::get('/restaurentpayment', 'PaymentController@restaurentpayment');
-Route::post('/preorderpayment', 'PaymentController@preorderpayment');
+Route::get('/restaurentpaymentsave', 'PaymentController@restaurentpaymentsave');
+Route::get('/preorderpayment', 'PaymentController@preorderpayment');
+Route::get('/preorderpayment1', 'PaymentController@preorderpaymentemail');
 
 /*Routes, For Menu,Item [START]*/
 Route::get('menu/{id}',['as'=>'menu','uses'=>'MenuItemController@index']);

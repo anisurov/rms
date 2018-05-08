@@ -10,7 +10,7 @@ class OnlineOrderController extends Controller
 {
     public function showAllOrder()
     {
-        $order=Order::select(['order_id','datetime','user_id','status'])->paginate(5);
+        $order=Order::select(['order_id','datetime','user_id','status'])->orderBy('order_id', 'desc')->paginate(5);
         $boy= DB::table('delivery_boy')->select(['delivery_boy_name'])->get();
         //var_dump($order);
         return view('showOnlineOrder', compact('order','boy'));
