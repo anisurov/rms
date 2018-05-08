@@ -7,7 +7,11 @@
         <div class="info-container-main">
             <div class="panel panel-default inside-body-panel-shadow">
            
-              <div class="panel-heading" style="padding:25px;"><div class="float-left">{{$item->item_name}}</div><div class="float-right">&nbsp;Rating:{{$item->item_rating}}</div></div>
+            <div class="panel-heading" style="padding:25px;">
+              <div  style="width:100px;display:inline-block;">{{$item->item_name}}</div>
+              <div  style="padding-left:36%;display:inline-block">Price: {{$item->item_price}}</div>
+              <div style="padding-left:36%;display:inline-block">&nbsp;Rating:{{$item->item_rating}}</div>
+              </div>
             
                 <div class="panel-body">
                   @php($image=explode(",",$item->item_image))

@@ -33,9 +33,10 @@ class MenuItemController extends Controller
 	public function update2(Request $request)
 	{
 		$item_name= $request -> input('item_name');  
+		$item_price= $request -> input('item_price');  
         $description= $request -> input('item_description');    
         $rating= $request -> input('item_rating');     
-        $data=array('item_name'=>$item_name,'item_description'=>$description,'item_rating'=>$rating);
+        $data=array('item_name'=>$item_name,'item_price'=>$item_price,'item_description'=>$description,'item_rating'=>$rating);
         DB::table('menu_item')->where('item_id',$request->input('id'))->update($data);
 		$menu =	new Item;
 		$items  = $menu->paginate(5);
