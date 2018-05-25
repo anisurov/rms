@@ -59,6 +59,10 @@ class TableController extends Controller
 		return view('tablepayment',compact('id','id2'))->withSuccessMessage("thanks!for your booking");
 
 		}
+		else
+		{
+			return view('tablepayment')->withSuccessMessage("thanks!for your booking");
+		}
    }
 
    public function showAllreservation () {
@@ -75,9 +79,10 @@ class TableController extends Controller
 		foreach ($branch as $key => $value) {
 			$branch_name = $value -> branch_name;
 		}
-	$table=Table::where('branch_name',$branch_name)->where('status','A')->orderBy('id', 'desc')
+		
+	$table=Table::where('branch_name',$branch_name)->where('status','P')->orderBy('id', 'desc')
                ->paginate(5);
-
+			  
 		return view('showTablreservation2',compact('table'));
 
 	}

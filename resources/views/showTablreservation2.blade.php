@@ -22,6 +22,7 @@
                 <tbody>                
                     @foreach ($table as $reservationData)                    
                     <tr>
+
 						   <td>{{$reservationData->table_name}} </td>
 	                        <td>{{$reservationData->date}}<br>{{$reservationData->time}}</td>
 	                        <td>{{$reservationData->noofperson}}</td>

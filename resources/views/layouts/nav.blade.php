@@ -174,6 +174,14 @@
                             <li class="menu-item  {{Request::is('/') ? "current-page-item" : "" }}"><a href="/">Home</a>
                             </li>
 
+                            <li class="menu-item {{Request::is('menu') ? "current-page-item" : "" }}"><a href="{{route('allMenu')}}">Menu</a>
+                                <ul class="sub-menu">
+									@foreach(App\Menu::all() as $category)
+								<li class="menu-item"><a href="{{route('menu',$category->category_id)}}">	{{$category->category_name}}</a></li>
+									@endforeach
+                                </ul>
+                            </li>
+
                             <li class="menu-item"><a href="about.html">Payment</a>
                             <ul>
                             <li class="menu-item"><a href="{{ url('/restaurentpayment') }}">Restaurent Payment</a></li>

@@ -16,6 +16,7 @@
                         <th>Item Name</th>
                         <th>Item Price</th>
                         <th> Item Description</th>
+                        <th> Available Item</th>
                         <th>Item item_rating</th>
                     </tr>
                 </thead>
@@ -24,7 +25,8 @@
                     <tr>
                         <td><input type="text" name="item_name" value="{{$item->item_name}}"></td>
                         <td><input type="text" name="item_price" value="{{$item->item_price}}"></td>
-	                        <td><input type="text" name="item_description" value="{{$item->item_description}}"></td>
+	                    <td><input type="text" name="item_description" value="{{$item->item_description}}"></td>
+                        <td><input type="text" name="item_available" value="{{$item->item_availability}}"></td>
                         <td><input type="text" name="item_rating" value="{{$item->item_rating}}"></td>
                     </tr>
                    
